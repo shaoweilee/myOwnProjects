@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>noname</title>
+	</head>
+	<body>
+		<input type="text" name="" id="str1" value=""/>
+		<input type="text" name="" id="str2" value=""/>
+		<input type="button" id="run" value="比较并分割"/>
+		
+		<script>
+		var run = document.querySelector("#run");
+		run.onclick = function(){
+			var str_1;
+			var str_2;
+			var getBigger = function(str1,str2){
+				if (str1 != str2) {
+					if (str1>str2) {
+						return str1;
+					} else{
+						return str2;
+					}
+				} else{
+					alert("相等，别比了");
+					return;
+				}
+			}
+			str_1 = document.getElementById("str1").value;
+			str_2 = document.getElementById("str2").value;
+			var biggerStr = getBigger(str_1,str_2);
+			alert(biggerStr.split("").join("_"));
+		}
+		</script>
+	</body>
+</html>
