@@ -93,7 +93,7 @@ var drawClock = function(){
 		c.lineWidth = 3;
 		c.strokeStyle = "red";
 		c.translate(250,250);
-		c.rotate(second*6*Math.PI/180);
+		c.rotate(second*6*Math.PI/180);//秒针一秒走6度
 		c.beginPath();
 		c.moveTo(0,-170);
 		c.lineTo(0,10);
