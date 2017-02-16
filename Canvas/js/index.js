@@ -8,8 +8,14 @@ var drawClock = function(){
 	hour += minute/60;
 	minute += second/60;
 	second += miliSecond/1000;
+	hourText = Math.floor(hour)<10? "0" + Math.floor(hour) : Math.floor(hour);
+	minuteText = Math.floor(minute)<10? "0" + Math.floor(minute) : Math.floor(minute);
+	secondText = Math.floor(second)<10? "0" + Math.floor(second) : Math.floor(second);
+	
 	var canvas = document.getElementById("canvas");
 	var c = canvas.getContext("2d");
+	var img = new Image();
+	img.src = "img/timg(21).jpg";
 	var drawCircle = function(){/*画圆盘*/
 		c.save();
 		c.beginPath();
@@ -17,7 +23,14 @@ var drawClock = function(){
 		c.fillStyle = "aquamarine";
 		c.lineWidth = 10;
 		c.arc(250,250,200,0*Math.PI,2*Math.PI,false);
-		c.fill();
+//		c.fill();
+		/*因为fill的存在，每一次settimeinterval之后刷出的表针才能被覆盖掉，注释掉就糟了*/
+		
+		c.clip();
+//		img.onload = function(){
+		c.drawImage(img,45,45);
+//		}
+
 		c.stroke();
 		c.closePath();
 		c.restore();
@@ -67,7 +80,7 @@ var drawClock = function(){
 		//时针
 		c.save();
 		c.lineWidth = 7;
-		c.strokeStyle = "darkblue";
+		c.strokeStyle = "lightblue";
 		c.translate(250,250);
 		c.rotate(hour*30*Math.PI/180);
 		c.beginPath();
@@ -113,19 +126,31 @@ var drawClock = function(){
 		c.strokeStyle = "#FF0000"
 		c.fillStyle = "#ffff00";
 		c.closePath();
-		c.fill();
+//		c.fill();
 		c.stroke();
 
 		c.restore();
 		
 
 	}
+	var drawText = function(){/*写文字*/
+			
+		c.save();
+		c.fillStyle = "white";
+		c.strokeStyle = "black";
+		c.lineWidth = 5;
+		c.font = "30px 微软雅黑";
+//		c.strokeText(hourText + ":" + minuteText + ":" + secondText,193,403);
+		c.fillText(hourText + ":" + minuteText + ":" + secondText,190,400);
+		c.restore();
+	}
 	
 	drawCircle();
 	drawHourDegree();
 	drawMinuteDegree();
+	drawText();
 	hands();
 }
 
 drawClock();
-setInterval(drawClock,40);
+setInterval(drawClock,20);
