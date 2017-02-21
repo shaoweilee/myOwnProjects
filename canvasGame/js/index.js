@@ -8,7 +8,7 @@ var centerX = 300;
 var centerY = 200;
 var centerRadius = 50;
 
-var level = 1;
+var level = 0;
 var ballRadius = 10;
 var levelArray = [
 	{"initNum":3, "waitNum":5, "speed":200},
