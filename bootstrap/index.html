@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css"/>
 		<style type="text/css">
+			body{color: #3a617e;font-family: "微软雅黑";}
 			#myNav{background: #148cca;}
 			#myNav a{color: white;font-weight: bold;}
 			.navbar-default .navbar-toggle .icon-bar{background-color: #FFFFFF;}
@@ -13,14 +14,18 @@
 			.navbar-default .navbar-toggle:focus{background: transparent;border: none;}
 			.navbar-default .navbar-toggle:hover{background: transparent;border: none;}
 			.navbar-default .navbar-toggle:active{background: transparent;border: none;}
+			.cont{height: 300px;margin-top: 30px;}
+			.myH3{color: #00FFFF;}
+			.myButton{margin-top: 20px;}
 			@media(max-width:768px){
 				#myLogin{
 					position: absolute;
-					top: 5px;
+					top: 6px;
 					left: 50%;
 					
 				}
 			}
+			#myCarousel{margin-top: 50px;}
 		</style>
 		<title>bootstrap</title>
 	</head>
@@ -54,9 +59,67 @@
 					</div>
 				</div>
 			</nav>
-			<div></div>
+			<div class="carousel slide" id="myCarousel" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+					<li data-slide-to="1" data-target="#myCarousel"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active"><a href=""><img src="img/gamersky_01origin_01_20172182053643.jpg" alt="" /></a></div>
+					<div class="item"><a href=""><img src="img/未标题-1.jpg" alt="" /></a></div>
+				</div>
+			</div>
 		</header>
 		
+		<!--主体-->
+		<article class="container">
+			<section class="row cont">
+				<aside class="col-md-4 col-xs-12 text-center">
+					<img src="img/image_emoticon25.png"/>
+					<h3 class="myH3">SAE</h3>
+					<p>云应用</p>
+				</aside>
+				<article class="col-md-8 col-xs-12">
+					<h3>应用开发、优化及运行的paas云计算平台</h3>
+					<p>应用开发、优化及运行的paas云计算平台</p>
+					<ul class="col-md-6 col-xs-12">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<ul class="col-md-6 col-xs-12">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<a href="" class="btn btn-primary myButton">了解详情</a>
+				</article>
+			</section>
+		</article>
+		<article class="container">
+			<section class="row cont">
+				<aside class="col-md-4 col-xs-12 text-center col-md-push-8">
+					<img src="img/image_emoticon25.png"/>
+					<h3 class="myH3">SAE</h3>
+					<p>云应用</p>
+				</aside>
+				<article class="col-md-8 col-xs-12 col-md-pull-4">
+					<h3>应用开发、优化及运行的paas云计算平台</h3>
+					<p>应用开发、优化及运行的paas云计算平台</p>
+					<ul class="col-md-6 col-xs-12">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<ul class="col-md-6 col-xs-12">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<a href="" class="btn btn-primary myButton">了解详情</a>
+				</article>
+			</section>
+		</article>
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script src="bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
