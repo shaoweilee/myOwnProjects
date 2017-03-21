@@ -33,6 +33,7 @@ body{
 	background-size: cover;
 	box-shadow: 10px 10px 10px 5px #000000;
 }
+
 .navbar nav{
 	display: flex;
 	justify-content: space-around;
@@ -40,12 +41,12 @@ body{
 }
 .logo{
 	display: inline-block;
-	font-size: 7em;
+	font-size: 6em;
 }
 .navbar ul li{
 	padding: 0 0.3em;
 	display: inline-block;
-	font-size: 4em;
+	font-size: 3em;
 }
 .navbar a{
 	position: relative;
@@ -119,3 +120,7 @@ a:hover::before,a:hover::after {
     opacity: 1;
     transform: translateX(0px);
 }*/
+.container section{
+	background: url(../img/border.png) no-repeat;
+	height: 85%;
+}
