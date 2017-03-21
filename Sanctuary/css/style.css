@@ -1,0 +1,121 @@
+/*css reset*/
+*{
+	padding: 0px;
+	margin: 0px;
+	
+}
+ul li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: black;
+	
+}
+/*css reset*/
+html{
+	font-size: 62.5%;
+	/*10px*/
+}
+body{
+	background: url(../img/table.jpg) no-repeat;
+	background-size: cover;
+}
+@font-face {
+	font-family:avqest;
+	src: url("../fonts/avqest.ttf");
+}
+.container{
+	margin: 5% auto;
+	height: 80em;
+	width: 60%;
+	background: url(../img/background.jpg) no-repeat;
+	background-size: cover;
+	box-shadow: 10px 10px 10px 5px #000000;
+}
+.navbar nav{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.logo{
+	display: inline-block;
+	font-size: 7em;
+}
+.navbar ul li{
+	padding: 0 0.3em;
+	display: inline-block;
+	font-size: 4em;
+}
+.navbar a{
+	position: relative;
+	font-family: avqest;
+	transition: all 0.2s ease;
+}
+.navbar a:before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-width: 0;
+	overflow: hidden;
+	border-bottom: 5px solid red;
+	color: red;
+	content: attr(data-hover);
+	transition: max-width 0.5s;
+}
+.navbar a:hover:before{
+	max-width: 100%;
+}
+/*两边括号包围效果*/
+/*.navbar a::before,.navbar a::after{
+	position: absolute;
+	opacity: 0;
+	transition: all 0.3s;
+}
+.navbar a::before{
+	left: 40%;
+	top: 1px;
+	content: "(";
+}
+.navbar a::after{
+	right: 40%;
+	top: 1px;
+	content: ")";
+}
+.navbar a:hover::before{
+	left: -10%;
+	opacity: 1;
+}
+.navbar a:hover::after{
+	right: -10%;
+	opacity: 1;
+}*/
+/*两边括号包围效果*/
+
+
+/*nav a {偷学技能哈哈哈哈哈！
+    position: relative;
+    margin: 15px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.35em;
+}
+a::before,a::after {
+    display: inline-block;
+    opacity: 0;
+    transition: all 0.3s;
+}
+a::before {
+    margin-right: 10px;
+    content: '[';
+    transform: translateX(20px);
+}
+a::after {
+    margin-left: 10px;
+    content: ']';
+    transform: translateX(-20px);
+}
+a:hover::before,a:hover::after {
+    opacity: 1;
+    transform: translateX(0px);
+}*/
