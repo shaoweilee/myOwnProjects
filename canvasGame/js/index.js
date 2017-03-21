@@ -184,5 +184,9 @@ function startGame(){
 //			window.location.href = "index.html"+level;
 		}
 	}
+<<<<<<< HEAD
+}
+=======
 }
 startGame(level);
+>>>>>>> 6f368b30203d4c0aa0b81c3f2e445c57c2e8e52e

@@ -1,6 +1,6 @@
 window.onload = function(){
 	var background = document.getElementById("background");
-	background.style.backgroundImage = "url(img/interface/background1unsodded.jpg)";
+	background.style.backgroundImage = "url(../img/interface/background1unsodded.jpg)";
 	var x = 0;
 	var timer = setInterval(function(){
 		x -=20;
@@ -44,7 +44,7 @@ window.onload = function(){
 				background.appendChild(sodScroll);
 				
 				var sodScrollCover = document.createElement("img");
-				sodScrollCover.src = "img/interface/SodRollCap.png";
+				sodScrollCover.src = "../img/interface/SodRollCap.png";
 				sodScrollCover.style.position = "absolute";
 				sodScrollCover.style.height = "71px";
 				sodScrollCover.style.width = "73px";
@@ -81,7 +81,7 @@ window.onload = function(){
 		var gameWindow = document.getElementById("gameWindow");
 		var sun = document.createElement("img");
 		var autoPick = true;
-		sun.src = "img/interface/Sun.gif";
+		sun.src = "../img/interface/Sun.gif";
 		sun.style.position = "absolute";
 		sun.style.cursor = "pointer";
 		sun.style.zIndex = 25;
@@ -140,46 +140,36 @@ window.onload = function(){
 //	var plantsHolder = document.getElementById("plantsHolder");
 	this.firePermission = false || firePermission;
 	this.plants = this.init();
-	this.bullets = this.createBullets();
 	this.blood = 4;
 	}
 	Plant.prototype.doplant = function(left,top){}
-	Plant.prototype.createBullets = function(){
-		var bullets = document.createElement("img");
-		bullets.src = "img/Plants/PB00.gif";
-		bullets.style.position = "absolute";
-		bullets.style.left = this.plants.offsetLeft + 30 + "px";
-		bullets.style.top = this.plants.offsetTop - 3 + "px";
-		bullets.style.zIndex = 998;
-//		plantsHolder.appendChild(bullets);
-		return bullets;
-	}
+
 	Plant.prototype.init = function(){
-		var cards = document.getElementById("cardPeashooter");
-		var plant,plant_trans;//改动了
-		cards.onclick = function(){
+		var that = this;
+		var cards = document.getElementById("cardPeashooter");//获取植物卡片
+		cards.onclick = function(){//点植物卡片创建植物与透明植物
 			var plantsHolder = document.getElementById("plantsHolder");
-			plant = document.createElement("img");//
-			plant_trans = document.createElement("img");
-			plant.src = "/img/Plants/Peashooter/Peashooter.gif";
+			var plant = document.createElement("img");//
+			var plant_trans = document.createElement("img");
+			plant.src = "../img/Plants/Peashooter/Peashooter.gif";
 			plant.style.position = "absolute";
 			plant.style.zIndex = 999;
 			plant.style.left = 0 + "px";
 			plant.style.top = 0 + "px";
 			
-			plant_trans.src = "/img/Plants/Peashooter/Peashooter.gif";
+			plant_trans.src = "../img/Plants/Peashooter/Peashooter.gif";
 			plant_trans.style.position = "absolute";
 			plant_trans.style.zIndex = 998;
 			plant_trans.style.left = 0 + "px";
 			plant_trans.style.top = 0 + "px";
 			plant_trans.style.opacity = 0.8;
 			plant_trans.style.display = "none";
-			plantsHolder.appendChild(plant);
+			plantsHolder.appendChild(plant);//植物和透明植物附着在父节点上
 			plantsHolder.appendChild(plant_trans);
 			
 			var imgs = cards.getElementsByTagName("img");
 			imgs[1].style.visibility = "hidden";
-			document.onmousemove = function(ev){
+			document.onmousemove = function(ev){//检测鼠标移动确定植物的位置
 					var e = ev || window.event;
 					plant.style.left = e.clientX - plant.offsetWidth/2 + "px";
 					plant.style.top = e.clientY - plant.offsetHeight/2 + "px";
@@ -223,29 +213,37 @@ window.onload = function(){
 					}
 				}
 		}
-		console.log(plant);
 		return plant;
 	}
+Plant.prototype.createBullets = function(){
+	if (this.plants != undefined) {
+		var bullets = document.createElement("img");
+		bullets.src = "../img/Plants/PB00.gif";
+		bullets.style.position = "absolute";
+		bullets.style.left = this.plants.offsetLeft + 30 + "px";
+		bullets.style.top = this.plants.offsetTop - 3 + "px";
+		bullets.style.zIndex = 998;
+		plantsHolder.appendChild(bullets);
+		return bullets;
+	}
+}
 	Plant.prototype.shoot = function(){
 		var that = this;
 		this.shooterTimer = setInterval(function(){
-			if (that.firePermission) {
-				plantsHolder.appendChild(that.bullets);//test
-			}
-			setInterval(function(){
-				that.bullets.style.left = that.bullets.offsetLeft + 11 + "px";
-				if (that.bullets.offsetLeft >= 1000) {
-				plantsHolder.removeChild(that.bullets);
-				}
-			},80);
+				var bullets = that.createBullets();
+				setInterval(function(){
+					bullets.style.left = bullets.offsetLeft + 11 + "px";
+					if (bullets.offsetLeft >= 1000) {
+					plantsHolder.removeChild(that.bullets);
+					}
+				},80);
 		},2000);
 	}
 	
-//	Plant.prototype.stopShoot = function(){
-//		clearInterval(this.shooterTimer);
-//		this.shooterTimer = null;
-//	}
-	//↑↑↑↑↑↑↑↑↑↑↑↑↑↑firePermission之后，停止射击的方法不再需要
+	Plant.prototype.stopShoot = function(){
+		clearInterval(this.shooterTimer);
+		this.shooterTimer = null;
+	}
 	Plant.prototype.die = function(){
 		this.stopShoot();
 		plantsHolder.removeChild(this.plants);
@@ -287,7 +285,7 @@ window.onload = function(){
 	Zombie.prototype.lostHead = function(){
 		var head = document.createElement("img");
 		var that = this;
-		head.src = "img/Zombies/Zombie/ZombieHead.gif";
+		head.src = "../img/Zombies/Zombie/ZombieHead.gif";
 		head.style.zIndex = 998;
 		this.liveZombieholder.appendChild(head);
 		setTimeout(function(){
@@ -405,3 +403,5 @@ window.onload = function(){
 //	}
 //	createPlants();
 //}
+
+
