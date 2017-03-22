@@ -12,14 +12,23 @@ a{
 	color: black;
 	
 }
+h1{
+	font-family: avqest;
+	font-size: 3em;
+}
 /*css reset*/
+/*css public*/
+.normalText{
+	font-size: 1.6em;
+}
+/*css public*/
 html{
 	font-size: 62.5%;
 	/*10px*/
 }
 body{
-	background: url(../img/table.jpg) no-repeat;
-	background-size: cover;
+	background: url(../img/table2.jpg) repeat-y;
+	background-size: 100% auto;
 }
 @font-face {
 	font-family:avqest;
@@ -27,14 +36,15 @@ body{
 }
 .container{
 	margin: 5% auto;
-	height: 80em;
+	height: 200em;
 	width: 60%;
-	background: url(../img/background.jpg) no-repeat;
-	background-size: cover;
-	box-shadow: 10px 10px 10px 5px #000000;
+	background: url(../img/background.jpg) repeat-y;
+	background-size: 100% auto;
+	box-shadow: 0px 0px 20px 10px #000000;
 }
 
 .navbar nav{
+	user-select: none;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -59,7 +69,7 @@ body{
 	left: 0;
 	max-width: 0;
 	overflow: hidden;
-	border-bottom: 5px solid red;
+	border-bottom: 5px solid rgb(189,70,72);
 	color: red;
 	content: attr(data-hover);
 	transition: max-width 0.5s;
@@ -120,7 +130,17 @@ a:hover::before,a:hover::after {
     opacity: 1;
     transform: translateX(0px);
 }*/
-.container section{
-	background: url(../img/border.png) no-repeat;
-	height: 85%;
+.hello{
+	background: url(../img/border.png) no-repeat center top;
+	height: 20%;
+}
+.hello article{
+	display: flex;
+	padding: 20% 10%;
+}
+.hello article div.left{
+	width: 60%;
+}
+.hello article div.right{
+	width: 40%;
 }
