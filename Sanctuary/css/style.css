@@ -27,6 +27,12 @@ h1{
 .flex-col{
 	flex-direction: column;
 }
+.flex-wrap{
+	flex-wrap: wrap;
+}
+.flex-basis100{
+	flex-basis: 100%;
+}
 .flex-row-center{
 	justify-content: center;
 }
@@ -118,5 +124,17 @@ body{
 /*hello部分*/
 
 /*work部分*/
-
+.work article{
+	padding: 5% 5% 0% 5%;
+}
+.work article div ul{
+	margin: 20px 0px;
+}
+.work article div ul img{
+	position: relative;
+}
+.work article div ul img:before{
+	position: absolute;
+	
+}
 /*work部分*/
