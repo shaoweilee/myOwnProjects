@@ -12,14 +12,57 @@ a{
 	color: black;
 	
 }
+h1{
+	font-family: avqest;
+	font-size: 3em;
+}
 /*css reset*/
+/*css public*/
+.normalText{
+	font-size: 1.6em;
+}
+.flex{
+	display: flex;
+}
+.flex-col{
+	flex-direction: column;
+}
+.flex-wrap{
+	flex-wrap: wrap;
+}
+.flex-basis100{
+	flex-basis: 100%;
+}
+.flex-row-center{
+	justify-content: center;
+}
+.flex-space-between{
+	justify-content: space-between;
+}
+.flex-speace-around{
+	justify-content: space-around;
+}
+.flex-col-center{
+	align-items: center;
+}
+.img-reverse-x{
+	transform: scaleX(-1);
+}
+.img-reverse-y{
+	transform: scaleY(-1);
+}
+.img-reverse-xy{
+	transform: scale(-1,-1);
+}
+/*css public*/
 html{
 	font-size: 62.5%;
 	/*10px*/
 }
 body{
-	background: url(../img/table.jpg) no-repeat;
-	background-size: cover;
+	user-select: none;
+	background: url(../img/table2.jpg) repeat-y;
+	background-size: 100% auto;
 }
 @font-face {
 	font-family:avqest;
@@ -27,17 +70,15 @@ body{
 }
 .container{
 	margin: 5% auto;
-	height: 80em;
+	height: 200em;
 	width: 60%;
-	background: url(../img/background.jpg) no-repeat;
-	background-size: cover;
-	box-shadow: 10px 10px 10px 5px #000000;
+	background: url(../img/background.jpg) repeat-y;
+	background-size: 100% auto;
+	box-shadow: 0px 0px 20px 10px #000000;
 }
-
-.navbar nav{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+/*nav部分*/
+.navbar{
+	padding-top: 3%;
 }
 .logo{
 	display: inline-block;
@@ -59,7 +100,7 @@ body{
 	left: 0;
 	max-width: 0;
 	overflow: hidden;
-	border-bottom: 5px solid red;
+	border-bottom: 5px solid rgb(189,70,72);
 	color: red;
 	content: attr(data-hover);
 	transition: max-width 0.5s;
@@ -67,60 +108,33 @@ body{
 .navbar a:hover:before{
 	max-width: 100%;
 }
-/*两边括号包围效果*/
-/*.navbar a::before,.navbar a::after{
+/*nav部分*/
+
+/*hello部分*/
+.hello article{
+	padding: 5% 5% 0% 5%;
+}
+.hello div.right>img{
+	width: 30%;
+	transition: all 0.5s ease;
+}
+.hello div.right>img:hover{
+	width: 100%;
+}
+/*hello部分*/
+
+/*work部分*/
+.work article{
+	padding: 5% 5% 0% 5%;
+}
+.work article div ul{
+	margin: 20px 0px;
+}
+.work article div ul img{
+	position: relative;
+}
+.work article div ul img:before{
 	position: absolute;
-	opacity: 0;
-	transition: all 0.3s;
+	
 }
-.navbar a::before{
-	left: 40%;
-	top: 1px;
-	content: "(";
-}
-.navbar a::after{
-	right: 40%;
-	top: 1px;
-	content: ")";
-}
-.navbar a:hover::before{
-	left: -10%;
-	opacity: 1;
-}
-.navbar a:hover::after{
-	right: -10%;
-	opacity: 1;
-}*/
-/*两边括号包围效果*/
-
-
-/*nav a {偷学技能哈哈哈哈哈！
-    position: relative;
-    margin: 15px 25px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.35em;
-}
-a::before,a::after {
-    display: inline-block;
-    opacity: 0;
-    transition: all 0.3s;
-}
-a::before {
-    margin-right: 10px;
-    content: '[';
-    transform: translateX(20px);
-}
-a::after {
-    margin-left: 10px;
-    content: ']';
-    transform: translateX(-20px);
-}
-a:hover::before,a:hover::after {
-    opacity: 1;
-    transform: translateX(0px);
-}*/
-.container section{
-	background: url(../img/border.png) no-repeat;
-	height: 85%;
-}
+/*work部分*/
