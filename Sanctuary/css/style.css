@@ -130,21 +130,40 @@ body{
 .work article div ul{
 	margin: 20px 0px;
 }
-.work article div ul img{
+.work article div ul li>a{
 	position: relative;
 }
-.work article div ul img:before{
-	content: "111";
-	position: absolute;
-	top: 50%;
-	left: 0;
-	max-width: 100%;
+.work li{
 	overflow: hidden;
+}
+.work a.workA{
+	display: inline-block;
+	height: 100%;
+}
+.workFigure{
+	position: absolute;
+	width: 100%;
+	
+}
+.work h2.workImgName{
+	text-align: center;
+	font-size: 5em;
+	top: 50%;
+	color: black;
+	opacity: 0;
+	transition: all 0.4s ease;
+}
+.work p.workImgDescription{
+	text-align: center;
+	font-size: 2em;
+	height: 30%;
 	color: white;
 	background: black;
-	transition: max-width 0.5s ease-out;
+	transition: all 0.2s ease;
 }
-.work article div ul img:hover:before{
-	max-width: 100%;
+.work li a:hover h2,
+.work li a:hover p{
+	opacity: 1;
+	transform: translate(0, -100%);
 }
 /*work部分*/
