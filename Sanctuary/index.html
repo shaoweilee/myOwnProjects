@@ -4,7 +4,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>庇护之地</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" media="all and (min-width:1600px)" href="css/1600Style.css">
+		<link rel="stylesheet" media="all and (min-width:1200px) and (max-width:1599px)" href="css/1200Style.css">
+		<link rel="stylesheet" media="all and (min-width:1024px) and (max-width:1199px)" href="css/1024Style.css">
 	</head>
 	<body>
 		<div class="container">
@@ -16,16 +18,14 @@
 						<li><a href="" data-hover="Me">Me</a></li>
 						<li><a href="" data-hover="Achievemrnts">Achievemrnts</a></li>
 						<li><a href="" data-hover="Contact">Contact</a></li>
-						<li><a href="" data-hover="CV">CV</a></li>
+						<li><a href="" data-hover="Knowledge">Knowledge</a></li>
 					</ul>
 				</nav>
 			</header>
 			<!--hello-->
 			<section class="hello">
 				<article class="flex flex-col flex-row-center">
-					<header class="flex flex-row-center">
-						<img src="img/border-top.png"/>
-					</header>
+					<header class="bg flex-single-center"></header>
 					<div class="flex flex-speace-around">
 						<div class="left">
 							<h1>Hello,Hero!</h1>
@@ -52,9 +52,7 @@
 							<img src="img/courage.jpg"/>
 						</div>-->
 					</div>
-					<footer class="flex flex-row-center">
-						<img src="img/border-top.png" class="img-reverse-y"/>
-					</footer>
+					<footer class="img-reverse-y bg flex-single-center"></footer>
 				</article>
 			</section>
 			<!--hello-->
@@ -62,12 +60,10 @@
 			<!--work-->
 			<section class="work">
 				<article class="flex flex-col flex-row-center">
-					<header class="flex flex-row-center">
-						<img src="img/border-top.png" class="img-reverse-x"/>
-					</header>
+					<header class="img-reverse-x bg flex-single-center"></header>
 					<h1>Achievements</h1>
-					<div class="flex flex-wrap">
-						<ul class="flex flex-basis100 flex-speace-around">
+					<div class="flex">
+						<ul class="flex flex-basis100 flex-speace-around flex-wrap">
 							<li>
 								<a href="" class="workA">
 									<img src="img/1.jpg" alt="picture1" />
@@ -89,8 +85,7 @@
 									<p class="workImgDescription workFigure">description</p>
 								</a>
 							</li>
-						</ul>
-						<ul class="flex flex-basis100 flex-speace-around"><li>
+							<li>
 								<a href="" class="workA">
 									<img src="img/4.jpg" alt="picture4" />
 									<h2 class="workImgName workFigure">name</h2>
@@ -113,46 +108,24 @@
 							</li>
 						</ul>
 					</div>
-					<footer class="flex flex-row-center">
-						<img src="img/border-top.png" class="img-reverse-xy"/>
-					</footer>
+					<footer class="img-reverse-xy bg flex-single-center"></footer>
 				</article>
 			</section>
 			<!--work-->
 			
 			
 			<!--Contact-->
-			<section class="hello">
+			<section class="contact">
 				<article class="flex flex-col flex-row-center">
-					<header class="flex flex-row-center">
-						<img src="img/border-top.png"/>
-					</header>
-					<div class="flex flex-speace-around">
-						<div class="left">
-							<h1>Contact</h1>
-							<p class="normalText">欢迎来到避难所，英雄。<br />
-							也许你正在征战前端的旅途中踟蹰不前；<br />
-							也许你已听闻，市场饱和；<br />
-							我的耳边也充斥着这种声音；<br />
-							但是，我相信，物竞天择；<br />
-							所以，请你也相信。<br />
-							英雄，祝好，愿你永不迟暮。
-							</p>
-						</div>
-						<div class="left">
-							<h1>About Me</h1>
-							<p class="normalText">如你所见，我也是个新手。<br />
-							我希望用这个避难所分享知识，虽然微薄。<br />
-							如果我能帮到你。<br />
-							那是我无上的荣光。<br />
-							<br />
-							<br />
-							</p>
-						</div>
+					<header class="bg flex-single-center"></header>
+					<div class="contact_content">
+						<h1>Contact</h1>
+						<p>
+							<span class="specialText">QQ:610382941</span><br />
+							<a href="https://github.com/shaoweilee/myOwnProjects" class="specialText">Github</a>
+						</p>
 					</div>
-					<footer class="flex flex-row-center">
-						<img src="img/border-top.png" class="img-reverse-y"/>
-					</footer>
+					<footer class="img-reverse-y bg flex-single-center"></footer>
 				</article>
 			</section>
 			<!--Contact-->
