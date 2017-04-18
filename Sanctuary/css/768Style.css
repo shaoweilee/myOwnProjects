@@ -94,7 +94,8 @@ body{
 }
 /*nav部分*/
 .navbar{
-	padding-top: 3%;
+	padding-top: 33px;
+	z-index: 99;
 }
 .logo{
 	display: inline-block;

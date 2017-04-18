@@ -92,7 +92,11 @@ body{
 }
 /*nav部分*/
 .navbar{
-	padding-top: 3%;
+	padding-top: 33px;
+	/*position: fixed;*/
+	z-index: 99;
+	/*left: 50%;*/
+	/*transform: translate(-50%, 0);*/
 }
 .logo{
 	display: inline-block;
