@@ -35,7 +35,7 @@ $.navClick = function(){
 		var body = document.body;
 		var e = event || window.event;
 		e.preventDefault();
-		ease(start, end, rate, function(value){body.scrollTop = value;console.log("end:"+value,"当前位置"+start);});
+		ease(start, end, rate, function(value){body.scrollTop = value;});
 	}
 //	var clickHandler = function(event, x){
 //		var body = document.body;
@@ -49,7 +49,7 @@ $.navClick = function(){
 	navList[3].onclick = function(event){
 		clickHandler(event, document.body.scrollTop, $(".work h1").offset().top - $(".work header").height() - $(navList).height(), 6);
 	}//注意这里event对象的传递,必须用匿名函数包裹，匿名函数不传参也可以的。
-	navList[5].onclick = function(event){clickHandler(event, document.body.scrollTop, 1500, 6);}//注意这里event对象的传递,必须用匿名函数包裹，匿名函数不传参也可以的。
+	navList[5].onclick = function(event){clickHandler(event, document.body.scrollTop, document.documentElement.scrollHeight - document.documentElement.clientHeight, 6);}//注意这里event对象的传递,必须用匿名函数包裹，匿名函数不传参也可以的。
 }
 
 
@@ -60,10 +60,10 @@ var ease = function(start, end, rate, callback){
 	var step = function(){
 		start = start + (end - start)/rate;
 		if (Math.abs(end - start) < 1) {
-			callback(end, true);
+			callback(end);
 			return;
 		}
-		callback(start, false);
+		callback(start);
 		requestAnimationFrame(step);
 	}
 	step();
