@@ -1,0 +1,2 @@
+$.fixedNav();
+$.navClick();
