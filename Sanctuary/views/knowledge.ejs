@@ -7,11 +7,7 @@
 		<title>庇护之地</title>
 		<script src="../public/js/jquery-2.0.3.js"></script>
 		<script src="../public/js/fixedNav.js" type="text/javascript" charset="utf-8"></script>
-		<link rel="stylesheet" media="all and (min-width:1600px)" href="../public/css/1600Style.css">
-		<link rel="stylesheet" media="all and (min-width:1200px) and (max-width:1599px)" href="../public/css/knowledge1200Style.css">
-		<link rel="stylesheet" media="all and (min-width:1024px) and (max-width:1199px)" href="../public/css/1024Style.css">
-		<link rel="stylesheet" media="all and (min-width:768px) and (max-width:1023px)" href="../public/css/768Style.css">
-		<link rel="stylesheet" media="all and (max-width:767px)" href="../public/css/767Style.css">
+		<link rel="stylesheet" href="../public/css/knowledge.css">
 	</head>
 	<body>
 		<div class="container"><!--container start-->
@@ -74,6 +70,18 @@
 										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
 									</p>
 								</li>
+								<li>
+									<h2>4545</h2>
+									<p class="normalText">
+										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
+									</p>
+								</li>
+								<li>
+									<h2>4545</h2>
+									<p class="normalText">
+										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
+									</p>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -88,14 +96,8 @@
 	
 		</div><!--container end-->
 		<!--目录开始-->
-		<div class="fix tosee" id="note">
-			<ul>
-				<li>a乌拉拉</li>
-				<li>b法师对法师</li>
-				<li>c案发士大夫噶啥</li>
-				<li>d是打发点</li>
-				<li>e是豆腐干</li>
-			</ul>
+		<div class="fix n_pub n_disappear" id="note">
+			<span class="n_switch"></span>
 			<ul>
 				<li>a乌拉拉</li>
 				<li>b法师对法师</li>
@@ -115,7 +117,14 @@
 		
 		<script src="../public/js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
+			$(".n_switch").mouseenter(function(){
+				$(this).addClass("n_switch_off");
+				$("#note").removeClass("n_disappear").addClass("n_appear");
+				$("#note").mouseleave(function(){
+					$("#note").addClass("n_disappear").removeClass("n_appear");
+					$(".n_switch").removeClass("n_switch_off");
+				});
+			});
 		</script>
 	</body>
 </html>

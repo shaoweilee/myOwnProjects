@@ -116,18 +116,16 @@ textarea{
 	top: 50%;
 	right: 0;
 	transform: translateY(-50%);
-	/*padding: 0 10% 0 0;*/
-	
 }
-.tosee ul{
-	width: 242px;
-	height: 162px;
-	padding: 7% 0 0 7%;
+.n_pub ul{
 	color: #000000;
 	font-size: 2em;
 	background: url(../img/note.png) no-repeat;
-	}
-
+	background-size: auto 100%;
+	padding: 7% 7% 0 7%;
+	width: 210px;
+	height: 140px;
+}
 /*新增-针对目录*/
 
 html{
@@ -148,17 +146,13 @@ body{
 }
 .container{
 	margin: 5% auto;
-	height: 150em;
+	/*height: 150em;*/
 	width: 75%;
 	background: url(../img/background.jpg) repeat-y;
 	background-size: 100% auto;
 	box-shadow: 0px 0px 20px 10px #000000;
 }
-@media only screen and (min-width: 1200px) and (max-width: 1216px) {
-	.container{
-		height: 170em;
-	}
-}
+
 /*nav部分*/
 .navbar{
 	padding-top: 33px;
@@ -194,68 +188,65 @@ body{
 }
 /*nav部分*/
 
-/*hello部分*/
+
 .container>section article{
 	padding: 5% 5% 0% 5%;
 }
 
-/*hello部分*/
-
-/*work部分*/
-.work article div ul{
-	margin: 20px 0px;
-}
-.work article div ul li>a{
-	position: relative;
-}
-.work li{
-	overflow: hidden;
-}
-.work li:nth-child(1),
-.work li:nth-child(2),
-.work li:nth-child(3){
-	margin-bottom: 30px;
-}
-.work li:nth-child(4){
-	height: 253px;
-}
-.work a.workA{
-	display: inline-block;
-	height: 100%;
-}
-.workFigure{
-	position: absolute;
-	width: 100%;
-}
-.work h2.workImgName{
-	text-align: center;
-	font-size: 5em;
-	top: 50%;
-	color: black;
-	opacity: 0;
-	transition: all 0.4s ease;
-}
-.work p.workImgDescription{
-	text-align: center;
-	font-size: 2em;
-	height: 30%;
-	color: white;
-	background: black;
-	transition: all 0.2s ease;
-}
-.work li a:hover h2,
-.work li a:hover p{
-	opacity: 1;
-	transform: translate(0, -100%);
-}
-/*work部分*/
-
-/*contact部分*/
-.contact_content>p{
-	text-align: center;
-}
-.contact_content>p *{
-	font-size: 2em;
+@media only screen and (min-width: 1600px){
+	html{
+		font-size: 62.5%;
+	}
+	.bg{
+		background: url(../img/1600border-top.png) no-repeat;
+		height: 196px;
+		width: 924px;
+	}
+	.n_pub ul{
+		width: 242px;
+		height: 162px;
+	}
 }
 
-/*contact部分*/
+@media only screen and (min-width: 1024px) and (max-width: 1199px){
+	html{
+		font-size: 49%;
+	}
+	.bg{
+		background: url(../img/1024border-top.png) no-repeat;
+		height: 95px;
+		width: 640px;
+	}
+	.n_appear ul{
+		transition: all 0.2s ease-out;
+	}
+	.n_disappear ul{
+		transform: translateX(230px);
+		transition: all 0.2s ease-out;
+	}
+	.n_pub ul{
+		padding: 5% 2% 0 7%;
+		width: 242px;
+		height: 120px;
+	}
+	.fix{
+		right: -5%;
+	}
+	.n_switch{
+		z-index: 99;
+		position: absolute;
+		top: 50%;
+		right: 65px;
+		transform: translateY(-50%) rotate(0deg);
+		display: inline-block;
+		width: 50px;
+		height: 63px;
+		background: url(../img/sprites.png);
+		transition: all 0.2s ease-in-out;
+	}
+	.n_switch_off{
+		top: 100%;
+		transform: translateY(-50%) rotate(90deg);
+
+	}
+}
