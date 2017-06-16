@@ -53,9 +53,7 @@ button{
 textarea{
 	display: block;
 }
-.p_list ul li{
-	padding-top: 10px;
-}
+
 /*css reset*/
 /*css public*/
 .normalText{
@@ -109,28 +107,6 @@ textarea{
 }
 
 /*css public*/
-
-/*新增-针对目录*/
-.fix{
-	position: fixed;
-	top: 50%;
-	right: 0;
-	transform: translateY(-50%);
-}
-.n_pub ul{
-	color: #000000;
-	font-size: 2em;
-	background: url(../img/note.png) no-repeat;
-	background-size: auto 100%;
-	padding: 7% 7% 0 7%;
-	width: 210px;
-	height: 140px;
-}
-.n_pub a:hover{
-	color: #FF0000;
-	transition: all 0.3s;
-}
-/*新增-针对目录*/
 
 html{
 	font-size: 55%;
@@ -191,7 +167,22 @@ body{
 	max-width: 100%;
 }
 /*nav部分*/
-
+.art_all{
+	font-family: avqest;
+	font-size: 2.5em;
+	text-align: center;
+}
+.art_all ul{
+	width: 100%;
+}
+.art_all ul li:first-child{
+	font-size: 2em;
+	background: url(../img/articleBG.png) no-repeat center center;
+}
+.art_all a:hover{
+	transition: all 0.3s;
+	color: #FF0000;
+}
 
 .container>section article{
 	padding: 5% 5% 0% 5%;
@@ -206,10 +197,6 @@ body{
 		height: 196px;
 		width: 924px;
 	}
-	.n_pub ul{
-		width: 242px;
-		height: 162px;
-	}
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1199px){
@@ -220,38 +207,6 @@ body{
 		background: url(../img/1024border-top.png) no-repeat;
 		height: 95px;
 		width: 640px;
-	}
-	.n_appear ul{
-		transition: all 0.2s ease-out;
-	}
-	.n_disappear ul{
-		transform: translateX(230px);
-		transition: all 0.2s ease-out;
-	}
-	.n_pub ul{
-		padding: 5% 2% 0 7%;
-		width: 242px;
-		height: 120px;
-	}
-	.fix{
-		right: -5%;
-	}
-	.n_switch{
-		z-index: 99;
-		position: absolute;
-		top: 50%;
-		right: 65px;
-		transform: translateY(-50%) rotate(0deg);
-		display: inline-block;
-		width: 50px;
-		height: 63px;
-		background: url(../img/sprites.png);
-		transition: all 0.2s ease-in-out;
-	}
-	.n_switch_off{
-		top: 100%;
-		transform: translateY(-50%) rotate(90deg);
-
 	}
 }
 
@@ -280,38 +235,6 @@ body{
 		user-select: none;
 		background: none;
 		/*background-size: 100% auto;*/
-	}
-	.n_appear ul{
-		transition: all 0.2s ease-out;
-	}
-	.n_disappear ul{
-		transform: translateX(230px);
-		transition: all 0.2s ease-out;
-	}
-	.n_pub ul{
-		padding: 5% 2% 0 7%;
-		width: 242px;
-		height: 120px;
-	}
-	.fix{
-		right: -5%;
-	}
-	.n_switch{
-		z-index: 99;
-		position: absolute;
-		top: 50%;
-		right: 65px;
-		transform: translateY(-50%) rotate(0deg);
-		display: inline-block;
-		width: 50px;
-		height: 63px;
-		background: url(../img/sprites.png);
-		transition: all 0.2s ease-in-out;
-	}
-	.n_switch_off{
-		top: 100%;
-		transform: translateY(-50%) rotate(90deg);
-
 	}
 	.navbar a:before{
 		border-bottom: 3px solid rgb(189,70,72);
@@ -343,41 +266,6 @@ body{
 		user-select: none;
 		background: none;
 		/*background-size: 100% auto;*/
-	}
-	#note{
-		display: none;
-	}
-	.n_appear ul{
-		transition: all 0.2s ease-out;
-	}
-	.n_disappear ul{
-		transform: translateX(230px);
-		transition: all 0.2s ease-out;
-	}
-	.n_pub ul{
-		padding: 5% 2% 0 7%;
-		width: 242px;
-		height: 120px;
-	}
-	.fix{
-		right: -5%;
-	}
-	.n_switch{
-		z-index: 99;
-		position: absolute;
-		top: 50%;
-		right: 65px;
-		transform: translateY(-50%) rotate(0deg);
-		display: inline-block;
-		width: 50px;
-		height: 63px;
-		background: url(../img/sprites.png);
-		transition: all 0.2s ease-in-out;
-	}
-	.n_switch_off{
-		top: 100%;
-		transform: translateY(-50%) rotate(90deg);
-
 	}
 	.navbar ul li:nth-child(1),
 	.navbar ul li:nth-child(2),
