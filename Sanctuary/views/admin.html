@@ -1,9 +1,105 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.css" />
+		<script src="../public/js/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.content {
+				height: 800px;
+			}
+		</style>
 		<title>hero!</title>
 	</head>
+
 	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1">
+					<button class="btn btn-default active" id="xie">写文章</button>
+					<button class="btn btn-default" id="guanli">管文章</button>
+				</div>
+				<div class="col-md-10">
+					<form id="form">
+						<!--写文章表格-->
+						<div class="form-group">
+							<label for="biaoti">文章标题</label>
+							<input name="biaoti" type="text" class="form-control" id="biaoti" placeholder="请输入标题">
+						</div>
+						<div class="form-group">
+							<span>文章分类</span>
+							<select class="form-control" id="fenlei">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+							<span>文章正文</span>
+							<div class="toolbar">
+								<span class="btn btn-default" id="code">插入代码</span>
+								<span class="btn btn-default" id="h1">一级标题</span>
+								<span class="btn btn-default" id="h2">二级标题</span>
+								<span class="btn btn-default" id="h3">三级标题</span>
+							</div>
+							<div class="form-control content" contenteditable="true" style="" id="zhengwen">
+								<p id="backup">请输入正文</p>
+							</div>
+							<!--<textarea name="zhengwen" rows="40" cols="50" id="zhengwen" class="form-control"></textarea>-->
+						</div>
+						<button type="submit" class="btn btn-default" id="fabu">发文章</button>
+						<button type="submit" class="btn btn-default" id="caogao">存草稿</button>
+					</form>
+					<div class="list-group hidden" id="allwenzhang">
+						<a href="#" class="list-group-item">文章1
+							<button class="btn btn-default text-right">发布</button>
+							<button class="btn btn-default text-right">修改</button>
+						</a>
+						<a href="#" class="list-group-item">文章2</a>
+						<a href="#" class="list-group-item">文章3</a>
+						<a href="#" class="list-group-item">文章4</a>
+						<a href="#" class="list-group-item">文章5</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$("#zhengwen").focus(function(){
+				$("#backup").empty().removeAttr("id");
+				
+			});
+			$("#code").click(function(){
+				var h1 = document.createElement("h1");
+				var selected = window.getSelection().toString();
+				var index = $("#zhengwen").text().indexOf(selected);
+				console.log( index );
+				h1.innerHTML = selected;
+				console.log(h1);
+				$("#zhengwen").text( $("#zhengwen").text().replace(selected, "<h1>" + selected + "</h1>") );
+			});
+			$("#xie").click(function() {
+				$(this).addClass("active");
+				$("#guanli").removeClass("active");
+				$("#form").show();
+				$("#allwenzhang").addClass("hidden");
+			});
+			$("#guanli").click(function() {
+				$(this).addClass("active");
+				$("#xie").removeClass("active");
+				$("#form").hide();
+				$("#allwenzhang").removeClass("hidden");
+				$.get("/showAll", function() {
+					
+				});
+
+			});
+			$.post("/newwenzhang", {
+
+			});
+		</script>
 	</body>
+
 </html>
