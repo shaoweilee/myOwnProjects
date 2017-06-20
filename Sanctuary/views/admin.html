@@ -4,16 +4,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.css" />
-		<script src="../public/js/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+		<script src="/js/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			.content {
-				height: 800px;
+				height: 400px;
 			}
 		</style>
 		<title>hero!</title>
 	</head>
-
 	<body>
 		<div class="container">
 			<div class="row">
@@ -38,16 +37,7 @@
 								<option>5</option>
 							</select>
 							<span>文章正文</span>
-							<div class="toolbar">
-								<span class="btn btn-default" id="code">插入代码</span>
-								<span class="btn btn-default" id="h1">一级标题</span>
-								<span class="btn btn-default" id="h2">二级标题</span>
-								<span class="btn btn-default" id="h3">三级标题</span>
-							</div>
-							<div class="form-control content" contenteditable="true" style="" id="zhengwen">
-								<p id="backup">请输入正文</p>
-							</div>
-							<!--<textarea name="zhengwen" rows="40" cols="50" id="zhengwen" class="form-control"></textarea>-->
+							<div class="form-control content" style="" id="zhengwen"></div>
 						</div>
 						<button type="submit" class="btn btn-default" id="fabu">发文章</button>
 						<button type="submit" class="btn btn-default" id="caogao">存草稿</button>
@@ -65,38 +55,51 @@
 				</div>
 			</div>
 		</div>
-
+		<script src="/js/wangEditor.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">//创建编辑器
+			var E = window.wangEditor;
+			var editor = new E("#zhengwen");
+			editor.customConfig.uploadImgShowBase64 = true;//显示上传图片按钮，插入图片
+//			editor.customConfig.uploadImgServer = '/upload';//显示上传图片按钮，上传图片，不能与base64共存。
+			editor.create();
+		</script>
 		<script type="text/javascript">
-			$("#zhengwen").focus(function(){
-				$("#backup").empty().removeAttr("id");
-				
-			});
-			$("#code").click(function(){
-				var h1 = document.createElement("h1");
-				var selected = window.getSelection().toString();
-				var index = $("#zhengwen").text().indexOf(selected);
-				console.log( index );
-				h1.innerHTML = selected;
-				console.log(h1);
-				$("#zhengwen").text( $("#zhengwen").text().replace(selected, "<h1>" + selected + "</h1>") );
-			});
-			$("#xie").click(function() {
+			$("#xie").click(function() {//写文章
 				$(this).addClass("active");
 				$("#guanli").removeClass("active");
 				$("#form").show();
 				$("#allwenzhang").addClass("hidden");
 			});
-			$("#guanli").click(function() {
+			$("#guanli").click(function() {//管文章
 				$(this).addClass("active");
 				$("#xie").removeClass("active");
 				$("#form").hide();
 				$("#allwenzhang").removeClass("hidden");
-				$.get("/showAll", function() {
+				$.get("/showAll", function() {//切换到管文章页面之后，发送AJAX请求文章列表
 					
 				});
 
 			});
-			$.post("/newwenzhang", {
+			$("#fabu").click(function(e){//发布文章，editor.txt.html()获取内容；editor.txt.txt()获取纯文本
+				e.preventDefault();
+				var url = "/fabu",
+					data = {
+						"biaoti" : $("#biaoti").val(),
+						"fenlei" : $("#fenlei").val(),
+						"zhengwen" : editor.txt.html()
+					};
+				$.post(url, data, function(){
+					alert("已提交到服务器！");
+				});
+			});
+			$("#caogao").click(function(e){//存草稿
+				e.preventDefault();
+				var biaoti = $("#biaoti").val(),
+					fenlei = $("#fenlei").val(),
+					zhengwen = editor.txt.html();
+				console.log(biaoti, fenlei, zhengwen);	
+			});
+			$.post("/newwenzhang", {//获取
 
 			});
 		</script>
