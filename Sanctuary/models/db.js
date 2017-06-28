@@ -16,5 +16,14 @@ function oInsertWZ (data, callback) {
         });
     });
 }
-
-module.exports = {oInsertWZ};
+function oFindWZ(callback){
+    mongoClient.connect(wenzhangUrl, function(err, db){
+        if (err) {
+            callback(err, null);
+            return;
+        }
+        var col = db.collection("css");
+        col.find({});
+    });
+}
+module.exports = {oInsertWZ,oFindWZ};

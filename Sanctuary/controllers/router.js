@@ -25,5 +25,7 @@ var showIncomingMessage = function(req, res){
         });
     });
 }
-
-module.exports = {showKnowledge,showIncomingMessage,showAdmin};
+var showAllWZ = function(req, res){
+    oDb.oFindWZ();
+}
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ};
