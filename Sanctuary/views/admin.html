@@ -37,7 +37,7 @@
 								<option>5</option>
 							</select>
 							<span>文章正文</span>
-							<div class="form-control content" style="" id="zhengwen"></div>
+							<div class="form-control content" id="zhengwen"></div>
 						</div>
 						<button type="submit" class="btn btn-default" id="fabu">发文章</button>
 						<button type="submit" class="btn btn-default" id="caogao">存草稿</button>
@@ -74,9 +74,13 @@
 				$(this).addClass("active");
 				$("#xie").removeClass("active");
 				$("#form").hide();
-				$("#allwenzhang").removeClass("hidden");
-				$.get("/showAll", function() {//切换到管文章页面之后，发送AJAX请求文章列表
-					
+				$("#allwenzhang").removeClass("hidden").empty();
+				$.get("/showAll", function(data) {//切换到管文章页面之后，发送AJAX请求文章列表
+					console.log(data);
+                    data.forEach(function(element) {
+                        console.log(element.biaoti);
+                        $("<a></a>").addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
+                    });
 				});
 
 			});
@@ -99,9 +103,10 @@
 					zhengwen = editor.txt.html();
 				console.log(biaoti, fenlei, zhengwen);	
 			});
-			$.post("/newwenzhang", {//获取
 
-			});
+			// $.post("/newwenzhang", function(data){
+            //     console.log(data);
+            // });
 		</script>
 	</body>
 

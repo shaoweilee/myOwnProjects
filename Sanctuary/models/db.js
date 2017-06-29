@@ -7,6 +7,7 @@ function oInsertWZ (data, callback) {
     mongoClient.connect(wenzhangUrl, function(err, db){
         if (err) {
             callback(err, null);
+            db.close();
             return;
         }
         var col = db.collection("css");
@@ -20,10 +21,19 @@ function oFindWZ(callback){
     mongoClient.connect(wenzhangUrl, function(err, db){
         if (err) {
             callback(err, null);
+            db.close();
             return;
         }
         var col = db.collection("css");
-        col.find({});
+        col.find({}).toArray(function(err, result){
+            if (err) {
+                callback(err, null);
+                db.close();
+                return;
+            }
+            callback(null, result);
+            db.close();
+        });
     });
 }
 module.exports = {oInsertWZ,oFindWZ};

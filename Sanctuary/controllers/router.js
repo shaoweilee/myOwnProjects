@@ -26,6 +26,14 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
-    oDb.oFindWZ();
+    oDb.oFindWZ(function(err, result){
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            // console.log(result);
+            res.json(result);
+        }
+    });
 }
 module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ};
