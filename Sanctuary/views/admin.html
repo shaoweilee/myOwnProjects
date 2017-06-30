@@ -79,11 +79,19 @@
 					console.log(data);
                     data.forEach(function(element) {
                         console.log(element.biaoti);
-                        $("<a></a>").addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
+                        $('<a href = "#"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
                     });
 				});
 
 			});
+			$("#allwenzhang>a").click(
+				function(e) {
+					e.preventDefault();
+					$.get("/xiugai", function(){
+						console.log(1);
+					});
+				}
+			);
 			$("#fabu").click(function(e){//发布文章，editor.txt.html()获取内容；editor.txt.txt()获取纯文本
 				e.preventDefault();
 				var url = "/fabu",

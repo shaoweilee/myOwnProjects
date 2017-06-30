@@ -15,4 +15,7 @@ app.get("/tyrael", router.showAdmin);//管理员页面
 
 app.post("/fabu", router.showIncomingMessage);//处理发布请求
 app.get("/showAll", router.showAllWZ);
+app.get("/xiugai", function(res, req, next){
+    req.sendDate();
+});
 app.listen(80, "127.0.0.1");//
