@@ -43,14 +43,10 @@
 						<button type="submit" class="btn btn-default" id="caogao">存草稿</button>
 					</form>
 					<div class="list-group hidden" id="allwenzhang">
-						<a href="#" class="list-group-item">文章1
+						<!--<a href="#" class="list-group-item">文章1
 							<button class="btn btn-default text-right">发布</button>
 							<button class="btn btn-default text-right">修改</button>
-						</a>
-						<a href="#" class="list-group-item">文章2</a>
-						<a href="#" class="list-group-item">文章3</a>
-						<a href="#" class="list-group-item">文章4</a>
-						<a href="#" class="list-group-item">文章5</a>
+						</a>-->
 					</div>
 				</div>
 			</div>
@@ -79,14 +75,13 @@
 					console.log(data);
                     data.forEach(function(element) {
                         console.log(element.biaoti);
-                        $('<a href = "#"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
+                        $('<a href = "javascript:void(0);"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
                     });
+                        $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info").text("修改").appendTo( $("#allwenzhang > a") );
 				});
-
 			});
-			$("#allwenzhang>a").click(
+			$("#allwenzhang").on("click", "a", 
 				function(e) {
-					e.preventDefault();
 					$.get("/xiugai", function(){
 						console.log(1);
 					});
