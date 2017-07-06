@@ -17,7 +17,7 @@ function oInsertWZ (data, callback) {
         });
     });
 }
-function oFindWZ(callback){
+function oFindWZ(json, callback){
     mongoClient.connect(wenzhangUrl, function(err, db){
         if (err) {
             callback(err, null);
@@ -25,7 +25,7 @@ function oFindWZ(callback){
             return;
         }
         var col = db.collection("css");
-        col.find({}).toArray(function(err, result){
+        col.find(json).toArray(function(err, result){
             if (err) {
                 callback(err, null);
                 db.close();

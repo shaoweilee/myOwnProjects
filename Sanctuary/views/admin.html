@@ -77,13 +77,15 @@
                         console.log(element.biaoti);
                         $('<a href = "javascript:void(0);"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
                     });
-                        $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info").text("修改").appendTo( $("#allwenzhang > a") );
+                        $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info xiugai").text("修改").appendTo( $("#allwenzhang > a") );
 				});
 			});
-			$("#allwenzhang").on("click", "a", 
+
+			$("#allwenzhang").on("click", ".xiugai", //事件代理
 				function(e) {
-					$.get("/xiugai", function(){
-						console.log(1);
+					console.log(e.target.previousSibling.nodeValue);
+					$.get("/xiugai", {"biaoti" : e.target.previousSibling.nodeValue}, function(data){
+						console.log(data);//查找到该标题对应的文章。
 					});
 				}
 			);

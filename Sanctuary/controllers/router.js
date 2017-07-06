@@ -26,7 +26,7 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
-    oDb.oFindWZ(function(err, result){
+    oDb.oFindWZ({}, function(err, result){
         if (err) {
             console.log(err);
             return;
@@ -36,4 +36,15 @@ var showAllWZ = function(req, res){
         }
     });
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ};
+var showCertain = function(req, res){
+    oDb.oFindWZ(req.query, function(err, result){
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            // console.log(result);
+            res.json(result);
+        }
+    });
+}
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain};
