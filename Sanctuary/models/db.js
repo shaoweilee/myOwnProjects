@@ -36,4 +36,18 @@ function oFindWZ(json, callback){
         });
     });
 }
-module.exports = {oInsertWZ,oFindWZ};
+function oDelWZ(json, callback){
+    mongoClient.connect(wenzhangUrl, function(err, db){
+        if (err) {
+            callback(err, null);
+            db.close();
+            return;
+        }
+        var col = db.collection("css");
+        col.deleteOne(json, function(err, result){
+            callback(err, result);
+            db.close();
+        });
+    });
+}
+module.exports = {oInsertWZ,oFindWZ,oDelWZ};

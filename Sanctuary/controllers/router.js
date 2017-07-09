@@ -21,6 +21,7 @@ var showIncomingMessage = function(req, res){
                 return;
             } else {
                 console.log(result.result);
+                res.send("1");
             }
         });
     });
@@ -44,7 +45,19 @@ var showCertain = function(req, res){
         } else {
             // console.log(result);
             res.json(result);
+            console.log(result);
         }
     });
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain};
+var delCertain = function(req, res){
+    oDb.oDelWZ(req.query, function(err, result){
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log(result.result);
+            res.send("1");
+        }
+    });
+}
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain};

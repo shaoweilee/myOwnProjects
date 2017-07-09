@@ -14,6 +14,12 @@
 		<title>hero!</title>
 	</head>
 	<body>
+		<!--测试-->
+		<!--<div id="test">
+			点击按钮。
+		</div>
+		<button id="btn" class="btn btn-info">点我测试</button>-->
+		<!--测试结束-->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
@@ -30,11 +36,9 @@
 						<div class="form-group">
 							<span>文章分类</span>
 							<select class="form-control" id="fenlei">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+								<option>css</option>
+								<option>js</option>
+								<option>node</option>
 							</select>
 							<span>文章正文</span>
 							<div class="form-control content" id="zhengwen"></div>
@@ -78,13 +82,20 @@
                         $('<a href = "javascript:void(0);"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
                     });
                         $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info xiugai").text("修改").appendTo( $("#allwenzhang > a") );
+                        $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info shanchu").text("删除").appendTo( $("#allwenzhang > a") );
 				});
 			});
 
 			$("#allwenzhang").on("click", ".xiugai", //事件代理
 				function(e) {
-					console.log(e.target.previousSibling.nodeValue);
 					$.get("/xiugai", {"biaoti" : e.target.previousSibling.nodeValue}, function(data){
+						console.log(data);//查找到该标题对应的文章。
+					});
+				}
+			);
+			$("#allwenzhang").on("click", ".shanchu", //事件代理
+				function(e) {
+					$.get("/shanchu", {"biaoti" : e.target.previousSibling.previousSibling.nodeValue}, function(data){
 						console.log(data);//查找到该标题对应的文章。
 					});
 				}
@@ -97,8 +108,8 @@
 						"fenlei" : $("#fenlei").val(),
 						"zhengwen" : editor.txt.html()
 					};
-				$.post(url, data, function(){
-					alert("已提交到服务器！");
+				$.post(url, data, function(data){
+					console.log(data);
 				});
 			});
 			$("#caogao").click(function(e){//存草稿
@@ -112,6 +123,15 @@
 			// $.post("/newwenzhang", function(data){
             //     console.log(data);
             // });
+
+			// 测试代码
+			// $("#btn").click(function(){
+			// 	$.get("/xiugai", function (data) {
+			// 		console.log(data[0].zhengwen);
+			// 		$("#test").html(data[0].zhengwen);;
+			// 	});
+			// });
+			// 测试代码结束
 		</script>
 	</body>
 
