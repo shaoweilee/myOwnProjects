@@ -27,6 +27,7 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
+    console.log(req);
     oDb.oFindWZ({}, function(err, result){
         if (err) {
             console.log(err);

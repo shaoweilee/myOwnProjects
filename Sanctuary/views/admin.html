@@ -75,10 +75,10 @@
 				$("#xie").removeClass("active");
 				$("#form").hide();
 				$("#allwenzhang").removeClass("hidden").empty();
-				$.get("/showAll", function(data) {//切换到管文章页面之后，发送AJAX请求文章列表
+				$.get("/showAll", {fenleis: }, function(data) {//切换到管文章页面之后，发送AJAX请求文章列表
 					console.log(data);
                     data.forEach(function(element) {
-                        console.log(element.biaoti);
+                        // console.log(element.biaoti);
                         $('<a href = "javascript:void(0);"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
                     });
                         $('<a href = "javascript:void(0);"></a>').addClass("btn btn-info xiugai").text("修改").appendTo( $("#allwenzhang > a") );

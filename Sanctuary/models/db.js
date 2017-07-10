@@ -10,7 +10,7 @@ function oInsertWZ (data, callback) {
             db.close();
             return;
         }
-        var col = db.collection("css");
+        var col = db.collection(data.fenlei);
         col.insertOne(data, function(err, result){
             callback(err, result)
             db.close();
