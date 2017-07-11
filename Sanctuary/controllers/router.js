@@ -27,15 +27,23 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
-    console.log(req);
-    oDb.oFindWZ({}, function(err, result){
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            // console.log(result);
-            res.json(result);
-        }
+    console.log(req.query.fenleis);
+    var allResult = [];
+    req.query.fenleis.forEach(function(ele, index, arr){
+        oDb.oFindWZ(ele, {}, function(err, result){//我是异步哦
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                // console.log(result);
+                console.log(result);
+                allResult.push(result);
+                if (index = arr.length-1) {
+                    res.send(allResult);
+                    console.log(43, allResult);
+                }
+            }
+        });
     });
 }
 var showCertain = function(req, res){

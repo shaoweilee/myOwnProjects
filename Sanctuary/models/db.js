@@ -17,14 +17,15 @@ function oInsertWZ (data, callback) {
         });
     });
 }
-function oFindWZ(json, callback){
+function oFindWZ(colName, json, callback){
     mongoClient.connect(wenzhangUrl, function(err, db){
         if (err) {
             callback(err, null);
             db.close();
             return;
         }
-        var col = db.collection("css");
+        var col = db.collection(colName);
+        // console.log(colName);
         col.find(json).toArray(function(err, result){
             if (err) {
                 callback(err, null);
