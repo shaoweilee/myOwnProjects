@@ -27,7 +27,7 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
-    console.log(req.query.fenleis);
+    console.log(30, req.query.fenleis);
     var allResult = [];
     req.query.fenleis.forEach(function(ele, index, arr){
         oDb.oFindWZ(ele, {}, function(err, result){//我是异步哦
@@ -35,10 +35,10 @@ var showAllWZ = function(req, res){
                 console.log(err);
                 return;
             } else {
-                // console.log(result);
-                console.log(result);
+                console.log(38, result);
                 allResult.push(result);
                 if (index = arr.length-1) {
+                    console.log(index, arr.length);
                     res.send(allResult);
                     console.log(43, allResult);
                 }
