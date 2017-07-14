@@ -44,11 +44,35 @@ function oDelWZ(json, callback){
             db.close();
             return;
         }
-        var col = db.collection("css");
-        col.deleteOne(json, function(err, result){
-            callback(err, result);
-            db.close();
+        db.collections(function(err, cols){
+            for (var i = 1; i < cols.length; i++) {
+                // console.log(49, cols[i].collectionName);
+                cols[i].deleteOne(json, function(err, result){
+                    if (result.deletedCount !== 0) {
+                        callback(err, result);
+                        db.close();
+                    }
+                });
+            }
         });
     });
 }
+// 输入标题，可以遍历所有数据库，并返回该文章以及所在的集合
+// function bianli(json, callback) {
+//     mongoClient.connect(wenzhangUrl, function(err, db){
+//         if (err) {
+//             callback(err);
+//             db.close();
+//             return;
+//         }
+//         db.collections(function(err, cols){
+//             for (var i = 1; i < cols.length; i++) {
+//                 cols[i].find(json, function (err, result) {
+//                     callback(result);
+//                 });
+                
+//             }
+//         });
+//     });
+// }
 module.exports = {oInsertWZ,oFindWZ,oDelWZ};

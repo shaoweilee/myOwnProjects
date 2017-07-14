@@ -62,14 +62,17 @@ var showCertain = function(req, res){
     });
 }
 var delCertain = function(req, res){
-    oDb.oDelWZ(req.query, function(err, result){
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            console.log(result.result);
-            res.send("1");
+    oDb.oDelWZ(req.query, 
+        function(err, result){//callback
+            console.log("要删除的是：", req.query);
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                console.log(result.result);
+                res.send("1");
+            }
         }
-    });
+    );
 }
 module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain};
