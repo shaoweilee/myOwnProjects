@@ -34,7 +34,7 @@ var showAllWZ = function(req, res){
     // })(0);
     for (var i = 0; i < req.query.fenleis.length; i++) {
         var ele = req.query.fenleis[i];
-        console.log(ele);
+        // console.log(ele);
         oDb.oFindWZ(ele, {}, function(err, result){
             if (err) {
                 console.log(err);
@@ -42,7 +42,7 @@ var showAllWZ = function(req, res){
             } else {
                 allResult.push(result);
                 if (allResult.length == req.query.fenleis.length) {
-                    console.log(allResult);
+                    // console.log(allResult);
                     res.send(allResult);
                 }
             }
