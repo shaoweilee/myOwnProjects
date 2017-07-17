@@ -17,4 +17,5 @@ app.post("/fabu", router.showIncomingMessage);//处理发布请求
 app.get("/showAll", router.showAllWZ);//显示所有文章
 app.get("/xiugai", router.showCertain);
 app.get("/shanchu", router.delCertain);
+app.post("/upload", router.saveImg);
 app.listen(80, "127.0.0.1");//

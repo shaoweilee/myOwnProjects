@@ -59,8 +59,8 @@
 		<script type="text/javascript">//创建编辑器
 			var E = window.wangEditor;
 			var editor = new E("#zhengwen");
-			editor.customConfig.uploadImgShowBase64 = true;//显示上传图片按钮，插入图片
-//			editor.customConfig.uploadImgServer = '/upload';//显示上传图片按钮，上传图片，不能与base64共存。
+			// editor.customConfig.uploadImgShowBase64 = true;//显示上传图片按钮，插入图片
+			editor.customConfig.uploadImgServer = '/upload';//显示上传图片按钮，上传图片，不能与base64共存。
 			editor.create();
 		</script>
 		<script type="text/javascript">

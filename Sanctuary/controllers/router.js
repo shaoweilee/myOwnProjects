@@ -75,4 +75,12 @@ var delCertain = function(req, res){
         }
     );
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain};
+var saveImg = function(req, res){
+    var form = new formidable.IncomingForm();
+    form.uploadDir = "./!uploadFiles";
+    form.parse(req, function(err, fields, files){
+        console.log(81, files.name);
+        res.send("1");
+    });
+}
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain,saveImg};
