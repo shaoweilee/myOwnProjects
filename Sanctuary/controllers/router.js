@@ -51,16 +51,24 @@ var showAllWZ = function(req, res){
     }
 }
 var showCertain = function(req, res){
-    oDb.oFindWZ(req.query, function(err, result){
+    oDb.bianli(req.query, function(err, result){
         if (err) {
             console.log(err);
             return;
-        } else {
-            // console.log(result);
-            res.json(result);
-            console.log(result);
         }
+        // console.log(59, result);
+        res.send(result);
     });
+    // oDb.oFindWZ(req.query, function(err, result){
+    //     if (err) {
+    //         console.log(err);
+    //         return;
+    //     } else {
+    //         // console.log(result);
+    //         res.json(result);
+    //         console.log(result);
+    //     }
+    // });
 }
 var delCertain = function(req, res){
     oDb.oDelWZ(req.query, 

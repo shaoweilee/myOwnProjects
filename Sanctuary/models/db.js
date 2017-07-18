@@ -89,7 +89,7 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
         });
     });
 }
-bianli({"biaoti": "上传图片到服务器"},function(err, result){
-    console.log("**************************\n", result);
-});
-module.exports = {oInsertWZ,oFindWZ,oDelWZ};
+// bianli({"biaoti": "上传图片到服务器"},function(err, result){
+//     console.log("**************************\n", result);
+// });
+module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};
