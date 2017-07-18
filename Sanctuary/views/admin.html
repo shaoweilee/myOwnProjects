@@ -20,6 +20,7 @@
 		</div>
 		<button id="btn" class="btn btn-info">点我测试</button>-->
 		<!--测试结束-->
+		<!-- <img src="/!uploadFiles/01.jpg" alt=""> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
@@ -61,6 +62,15 @@
 			var editor = new E("#zhengwen");
 			// editor.customConfig.uploadImgShowBase64 = true;//显示上传图片按钮，插入图片
 			editor.customConfig.uploadImgServer = '/upload';//显示上传图片按钮，上传图片，不能与base64共存。
+			editor.customConfig.uploadImgHooks = {//用于在控制台显示失败或成功的结果。
+				fail: function(xhr, editor, result){
+					console.log(result);
+				},
+				success: function(xhr, editor, result){
+					console.log(result);
+				}
+			}
+			editor.customConfig.debug = true;//用于在控制台显示失败信息
 			editor.create();
 		</script>
 		<script type="text/javascript">

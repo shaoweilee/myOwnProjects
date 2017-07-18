@@ -1,4 +1,5 @@
 var path = require("path");
+var fs = require("fs");
 var formidable = require("formidable");
 var oDb = require("../models/db.js");
 var showKnowledge = function(req, res){
@@ -14,13 +15,13 @@ var showAdmin = function(req, res){
 var showIncomingMessage = function(req, res){
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, data, files){
-        console.log(data);
+        console.log("进来的文章", data);
         oDb.oInsertWZ(data, function(err, result){
             if (err) {
                 console.log(err);
                 return;
             } else {
-                console.log(result.result);
+                console.log("插入数据库结果", result.result);
                 res.send("1");
             }
         });
@@ -69,7 +70,7 @@ var delCertain = function(req, res){
                 console.log(err);
                 return;
             } else {
-                console.log(result.result);
+                console.log("删除结果", result.result);
                 res.send("1");
             }
         }
@@ -77,10 +78,20 @@ var delCertain = function(req, res){
 }
 var saveImg = function(req, res){
     var form = new formidable.IncomingForm();
-    form.uploadDir = "./!uploadFiles";
+    form.uploadDir = "./public/!uploadFiles";
     form.parse(req, function(err, fields, files){
-        console.log(81, files.name);
-        res.send("1");
+        for (var key in files) {
+            if (files.hasOwnProperty(key)) {
+                var element = files[key];
+                var oldPath = "./" + element.path;
+                var newPath = "./public/!uploadFiles/" + element.name;
+                fs.renameSync(oldPath, newPath);
+                res.send({
+                    errno: 0,
+                    data: ["http://localhost/!uploadFiles/" + element.name]
+                });
+            }
+        }
     });
 }
 module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain,saveImg};

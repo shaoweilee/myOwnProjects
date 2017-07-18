@@ -58,21 +58,38 @@ function oDelWZ(json, callback){
     });
 }
 // 输入标题，可以遍历所有数据库，并返回该文章以及所在的集合
-// function bianli(json, callback) {
-//     mongoClient.connect(wenzhangUrl, function(err, db){
-//         if (err) {
-//             callback(err);
-//             db.close();
-//             return;
-//         }
-//         db.collections(function(err, cols){
-//             for (var i = 1; i < cols.length; i++) {
-//                 cols[i].find(json, function (err, result) {
-//                     callback(result);
-//                 });
-                
-//             }
-//         });
-//     });
-// }
+function bianli(json, callback) {//接收查询条件，返回查询结果
+    mongoClient.connect(wenzhangUrl, function(err, db){
+        if (err) {
+            callback(err, null);
+            db.close();
+            return;
+        }
+        db.collections(function(err, cols){
+            for (var i = 1; i < cols.length; i++) {
+                (function(i){
+                    cols[i].find(json).toArray(function (err, result) {
+                        if (err) {
+                            callback(err, null);
+                            db.close();
+                            return;
+                        }
+                        // console.log(result);
+                        result.forEach(function(ele, index, arr){//牵扯到空数组调用foreach的问题 空数组调用foreach的话，无效果
+
+                            // if (ele.length > 0) {
+                                // console.log(79, ele);
+                                callback(null, ele);
+                                // db.close();
+                            // }
+                        });
+                    });
+                })(i);
+            }
+        });
+    });
+}
+bianli({"biaoti": "上传图片到服务器"},function(err, result){
+    console.log("**************************\n", result);
+});
 module.exports = {oInsertWZ,oFindWZ,oDelWZ};
