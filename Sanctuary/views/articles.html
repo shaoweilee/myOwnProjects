@@ -7,14 +7,14 @@
 		<title>文章列表</title>
 		<script src="/js/jquery-2.0.3.js"></script>
 		<!--<script src="/js/fixedNav.js" type="text/javascript" charset="utf-8"></script>-->
-		<link rel="stylesheet" href="../public/css/articles.css">
+		<link rel="stylesheet" href="/css/articles.css">
 	</head>
 	<body>
 		<div class="container"><!--container start-->
 			<!--navbar start-->
 			<header class="navbar">
 				<nav class="flex flex-speace-around flex-col-center">
-					<a class="logo" href="http://47.94.103.174/" data-hover = "Sanctuary">Sanctuary</a>
+					<a class="logo" href="http://www.herosanctuary.com/" data-hover = "Sanctuary">Sanctuary</a>
 					<ul>
 						<li><a href="/css" data-hover="CSS">CSS</a></li>
 						<li><a href="/js" data-hover="Javascript">Javascript</a></li>
@@ -50,5 +50,10 @@
 			</section>
 			<!--正文-->
 		</div>
+		<script>
+			$.get("/showAll", function(data){
+				console.log(data);
+			});
+		</script>
 	</body>
 </html>

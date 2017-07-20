@@ -5,7 +5,7 @@ var oDb = require("../models/db.js");
 var showKnowledge = function(req, res){
     res.sendFile(
     // console.log(
-        path.normalize(__dirname + "/../views/knowledge.html")
+        path.normalize(__dirname + "/../views/articles.html")
     )
 }
 var showAdmin = function(req, res){
