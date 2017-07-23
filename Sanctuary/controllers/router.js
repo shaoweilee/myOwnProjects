@@ -28,27 +28,34 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
-    var allResult = [];
-    var i = 1;
-    // (function iterator(i){
+    oDb.bianli({}, function(err, result){
+        if (err) {
+            console.log(err);
+            return;
+        }
+        res.send(result);
+    });
+    // var allResult = [];
+    // var i = 1;
+    // // (function iterator(i){
 
-    // })(0);
-    for (var i = 0; i < req.query.fenleis.length; i++) {
-        var ele = req.query.fenleis[i];
-        // console.log(ele);
-        oDb.oFindWZ(ele, {}, function(err, result){
-            if (err) {
-                console.log(err);
-                return;
-            } else {
-                allResult.push(result);
-                if (allResult.length == req.query.fenleis.length) {
-                    // console.log(allResult);
-                    res.send(allResult);
-                }
-            }
-        });
-    }
+    // // })(0);
+    // for (var i = 0; i < req.query.fenleis.length; i++) {
+    //     var ele = req.query.fenleis[i];
+    //     // console.log(ele);
+    //     oDb.oFindWZ(ele, {}, function(err, result){
+    //         if (err) {
+    //             console.log(err);
+    //             return;
+    //         } else {
+    //             allResult.push(result);
+    //             if (allResult.length == req.query.fenleis.length) {
+    //                 // console.log(allResult);
+    //                 res.send(allResult);
+    //             }
+    //         }
+    //     });
+    // }
 }
 var showCertain = function(req, res){
     oDb.bianli(req.query, function(err, result){

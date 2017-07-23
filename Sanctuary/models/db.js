@@ -66,9 +66,10 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
             return;
         }
         db.collections(function(err, cols){
+            var allResult = [];
             for (var i = 1; i < cols.length; i++) {
                 (function(i){
-                    cols[i].find(json).toArray(function (err, result) {
+                    cols[i].find(json).toArray(function (err, result) {//每一个cols[i]，都是一个单独的集合。
                         if (err) {
                             callback(err, null);
                             db.close();
@@ -79,7 +80,11 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
 
                             // if (ele.length > 0) {
                                 // console.log(79, ele);
-                                callback(null, ele);
+                                // callback(null, ele);
+                                allResult.push(ele);
+                                if (i == cols.length - 1) {
+                                    callback(null, allResult);
+                                }
                                 // db.close();
                             // }
                         });
