@@ -28,12 +28,17 @@ var showIncomingMessage = function(req, res){
     });
 }
 var showAllWZ = function(req, res){
+    var allResult = [];
     oDb.bianli({}, function(err, result){
         if (err) {
             console.log(err);
             return;
         }
-        res.send(result);
+        result.forEach(function(ele, index, arr) {
+            delete ele.zhengwen;
+            allResult.push(ele);
+        }, this);
+        res.send(allResult);
     });
     // var allResult = [];
     // var i = 1;

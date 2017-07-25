@@ -84,6 +84,7 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
                                 allResult.push(ele);
                                 if (i == cols.length - 1) {
                                     callback(null, allResult);
+                                    db.close();
                                 }
                                 // db.close();
                             // }
