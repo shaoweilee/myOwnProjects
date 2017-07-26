@@ -67,7 +67,7 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
         }
         db.collections(function(err, cols){
             var allResult = [];
-            for (var i = 1; i < cols.length; i++) {
+            for (var i = 1; i < cols.length; i++) {//第一个是system，没用。所以从第二个开始。
                 (function(i){
                     cols[i].find(json).toArray(function (err, result) {//每一个cols[i]，都是一个单独的集合。
                         if (err) {
@@ -75,20 +75,26 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
                             db.close();
                             return;
                         }
-                        // console.log(result);
-                        result.forEach(function(ele, index, arr){//牵扯到空数组调用foreach的问题 空数组调用foreach的话，无效果
+                        // console.log(i);//better with concat(), isn't it?
+                        allResult = allResult.concat(result);
+                        if (i == cols.length - 1) {
+                            callback(null, allResult);
+                            db.close();
+                        }
+                        // result.forEach(function(ele, index, arr){//牵扯到空数组调用foreach的问题 空数组调用foreach的话，无效果
 
                             // if (ele.length > 0) {
                                 // console.log(79, ele);
                                 // callback(null, ele);
-                                allResult.push(ele);
-                                if (i == cols.length - 1) {
-                                    callback(null, allResult);
-                                    db.close();
-                                }
+                                // allResult.push(ele);
+                                // if (i == cols.length - 1) {
+                                    // console.log(i);
+                                    // callback(null, allResult);
+                                    // db.close();
+                                // }
                                 // db.close();
                             // }
-                        });
+                        // });
                     });
                 })(i);
             }

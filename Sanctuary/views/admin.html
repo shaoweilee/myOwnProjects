@@ -92,7 +92,7 @@
 				$.get("/showAll",
 					// {fenleis: allFenlei}, 
 					function(data) {//切换到管文章页面之后，发送AJAX请求文章列表
-//					console.log(data);
+					console.log(data);
                     data.forEach(function(element) {
 						$('<a href = "javascript:void(0);"></a>').addClass("list-group-item").text(element.biaoti).appendTo( $("#allwenzhang") );
 //						console.log(element);
