@@ -69,7 +69,7 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
             var allResult = [];
             for (var i = 1; i < cols.length; i++) {//第一个是system，没用。所以从第二个开始。
                 (function(i){
-                    cols[i].find(json).toArray(function (err, result) {//每一个cols[i]，都是一个单独的集合。
+                    cols[i].find(json).toArray(function (err, result) {//每一个cols[i]，都是一个单独的集合collection。
                         if (err) {
                             callback(err, null);
                             db.close();
@@ -101,7 +101,4 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
         });
     });
 }
-// bianli({"biaoti": "上传图片到服务器"},function(err, result){
-//     console.log("**************************\n", result);
-// });
-module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};
+smodule.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};

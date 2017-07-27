@@ -32,17 +32,17 @@
 				<article class="flex flex-col">
 					<header class="bg"></header>
 					<div class="flex flex-col-center flex-col">
-						<ul>
+						<ul id="css">
 							<li>CSS</li>
-							<li><a href="">文章1</a></li>
+							<!-- <li><a href="">文章1</a></li> -->
 						</ul>
-						<ul>
+						<ul id="js">
 							<li>JavaScript</li>
-							<li><a href="">文章1</a></li>
+							<!-- <li><a href="">文章1</a></li> -->
 						</ul>
-						<ul>
+						<ul id="node">
 							<li>NodeJs</li>
-							<li><a href="">文章1</a></li>
+							<!-- <li><a href="">文章1</a></li> -->
 						</ul>
 					</div>
 					<footer class="img-reverse-y bg"></footer>
@@ -53,6 +53,19 @@
 		<script>
 			$.get("/showAll", function(data){
 				console.log(data);
+				data.forEach(function(ele, index, arr) {
+					switch (ele.fenlei) {
+						case "css":
+							$('<li><a href="">' + ele.biaoti + '</a></li>').appendTo( $('#css') );
+							break;
+						case "js":
+							$('<li><a href="">' + ele.biaoti + '</a></li>').appendTo( $('#js') );
+							break;
+						case "node":
+							$('<li><a href="">' + ele.biaoti + '</a></li>').appendTo( $('#node') );
+							break;
+					}
+				}, this);
 			});
 		</script>
 	</body>
