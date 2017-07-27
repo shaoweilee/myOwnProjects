@@ -71,7 +71,11 @@ var showCertain = function(req, res){
             return;
         }
         // console.log(59, result);
-        res.send(result);
+        res.sendFile(
+        // console.log(
+        path.normalize(__dirname + "/../views/knowledge.html")
+    )
+        // res.send(result);
     });
     // oDb.oFindWZ(req.query, function(err, result){
     //     if (err) {

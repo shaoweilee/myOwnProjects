@@ -101,4 +101,4 @@ function bianli(json, callback) {//接收查询条件，返回查询结果
         });
     });
 }
-smodule.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};
+module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};
