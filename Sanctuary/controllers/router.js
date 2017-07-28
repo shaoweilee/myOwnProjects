@@ -71,10 +71,7 @@ var showCertain = function(req, res){
             return;
         }
         // console.log(59, result);
-        res.sendFile(
-        // console.log(
-        path.normalize(__dirname + "/../views/knowledge.html")
-    )
+        res.send(result);
         // res.send(result);
     });
     // oDb.oFindWZ(req.query, function(err, result){
@@ -88,6 +85,12 @@ var showCertain = function(req, res){
     //     }
     // });
 }
+var showArticle = function(req, res){//传送模板knowledge.html
+    res.sendFile(
+        // console.log(
+        path.normalize(__dirname + "/../views/knowledge.html")
+    )
+};
 var delCertain = function(req, res){
     oDb.oDelWZ(req.query, 
         function(err, result){//callback
@@ -120,4 +123,4 @@ var saveImg = function(req, res){
         }
     });
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,delCertain,saveImg};
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg};
