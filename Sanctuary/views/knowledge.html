@@ -117,7 +117,16 @@
 		
 		<!--<script src="/js/index.js" type="text/javascript" charset="utf-8"></script>-->
 		<script type="text/javascript">
-			$(".n_switch").mouseenter(function(){
+			function parseQueryString(url) {
+				var json = {};
+				var arr = url.substr(url.indexOf('?') + 1).split('&');
+				arr.forEach(function(item) {
+					var tmp = item.split('=');
+					json[tmp[0]] = tmp[1];
+				});
+				return json;
+			}
+			$(".n_switch").mouseenter(function(){//切换目录
 				$(this).addClass("n_switch_off");
 				$("#note").removeClass("n_disappear").addClass("n_appear");
 				$("#note").mouseleave(function(){
