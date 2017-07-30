@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<base target="_blank" />
-		<title>something·Sanctuary</title>
+		<title></title>
 		<script src="/js/jquery-2.0.3.js"></script>
 		<!--<script src="/js/fixedNav.js" type="text/javascript" charset="utf-8"></script>-->
 		<link rel="stylesheet" href="/css/knowledge.css">
@@ -32,11 +32,11 @@
 				<article class="flex flex-col">
 					<header class="bg"></header>
 					<div class="">
-						<h1>文章大标题</h1>
-						<h2>副标题1</h2>
-						<h3>副标题2</h3>
-						<p class="normalText">
-							文章内容
+						<h1 id="zw_h1"></h1>
+						<!-- <h2>副标题1</h2> -->
+						<!-- <h3>副标题2</h3> -->
+						<p class="normalText" id="zw_p">
+							
 						</p>
 					</div>
 					<footer class="img-reverse-y bg"></footer>
@@ -99,11 +99,7 @@
 		<div class="fix n_pub n_disappear" id="note">
 			<span class="n_switch"></span>
 			<ul>
-				<li><a href="">a乌拉拉</a></li>
-				<li><a href="">a乌拉拉</a></li>
-				<li><a href="">a乌拉拉</a></li>
-				<li><a href="">a乌拉拉</a></li>
-				<li><a href="">a乌拉拉</a></li>
+				<!-- <li><a href="">a乌拉拉</a></li> -->
 			</ul>
 			<ul>
 				<li>|</li>
@@ -126,6 +122,16 @@
 				});
 				return json;
 			}
+			var json = parseQueryString( decodeURI(window.location.search) );//用decodeURI对网址解码，不然是乱码。
+			$.get("/showCertain", json, function(data){
+				$("#zw_h1").text(data[0].biaoti);
+				$("title").text(data[0].biaoti);
+				$("#zw_p").html(data[0].zhengwen);
+				var $a = $('<a href=""></a>').text( $("#zw_p").find("h2").html() );//只能找到一个
+				var $li = $("<li></li>").append($a);
+				$li.appendTo( $("#note").find("ul:first") );
+//				$("#note").find("ul:first").append( $(data[0].zhengwen) );
+			});
 			$(".n_switch").mouseenter(function(){//切换目录
 				$(this).addClass("n_switch_off");
 				$("#note").removeClass("n_disappear").addClass("n_appear");

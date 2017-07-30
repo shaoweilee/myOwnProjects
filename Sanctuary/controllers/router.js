@@ -66,6 +66,7 @@ var showAllWZ = function(req, res){
 }
 var showCertain = function(req, res){
     oDb.bianli(req.query, function(err, result){
+        console.log(req.query);
         if (err) {
             console.log(err);
             return;

@@ -19,4 +19,5 @@ app.get("/xiugai", router.showCertain);
 app.get("/shanchu", router.delCertain);
 app.post("/upload", router.saveImg);
 app.get("/articles", router.showArticle);
+app.get("/showCertain", router.showCertain);
 app.listen(80, "127.0.0.1");//
