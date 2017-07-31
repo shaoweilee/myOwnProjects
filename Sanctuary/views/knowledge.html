@@ -127,6 +127,11 @@
 				$("#zw_h1").text(data[0].biaoti);
 				$("title").text(data[0].biaoti);
 				$("#zw_p").html(data[0].zhengwen);
+				var allH2 = $("#zw_p").find("h2");
+				for (var i = 0; i < allH2.length; i++) {
+					var element = allH2[i];
+					console.log(element);
+				}
 				var $a = $('<a href=""></a>').text( $("#zw_p").find("h2").html() );//只能找到一个
 				var $li = $("<li></li>").append($a);
 				$li.appendTo( $("#note").find("ul:first") );
