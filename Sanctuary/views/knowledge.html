@@ -98,9 +98,9 @@
 		<!--目录开始-->
 		<div class="fix n_pub n_disappear" id="note">
 			<span class="n_switch"></span>
-			<ul>
+			<!-- <ul> -->
 				<!-- <li><a href="">a乌拉拉</a></li> -->
-			</ul>
+			<!-- </ul> -->
 			<ul>
 				<li>|</li>
 				<li><a href="">转到评论</a></li>
@@ -128,10 +128,21 @@
 				$("title").text(data[0].biaoti);
 				$("#zw_p").html(data[0].zhengwen);
 				var allH2 = $("#zw_p").find("h2");
-				for (var i = 0; i < allH2.length; i++) {
-					var element = allH2[i];
-					console.log(element);
+				//一个ul存放5个li，要先判断要生成几个ul，用向上取整。判断完之后用两层循环嵌套，生成ul。
+				var k = 0;
+				for (var j = 0; j < Math.ceil(allH2.length/5); j++) {
+					$("<ul></ul>").insertBefore( $("#note").find("ul:last") );
+					for (var i = 0; i < 5; i++) {
+						console.log(k);
+						var element = allH2[k++];
+						console.log("第"+j+"次", console.log(element));
+					}
 				}
+				// for (var i = 0; i < allH2.length; i++) {
+				// 	var element = allH2[i];
+				// 	element.innerHTML
+				// 	console.log(element);
+				// }
 				var $a = $('<a href=""></a>').text( $("#zw_p").find("h2").html() );//只能找到一个
 				var $li = $("<li></li>").append($a);
 				$li.appendTo( $("#note").find("ul:first") );
