@@ -1,6 +1,9 @@
 var path = require("path");
 var fs = require("fs");
 var formidable = require("formidable");
+var dbconf = require("../models/dbconf.js").dbconf,
+    pinglunUrl = dbconf.url_pinglun,
+    wenzhangUrl = dbconf.url_wenzhang;
 var oDb = require("../models/db.js");
 var showKnowledge = function(req, res){
     res.sendFile(
@@ -16,7 +19,7 @@ var showIncomingMessage = function(req, res){
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, data, files){
         console.log("进来的文章", data);
-        oDb.oInsertWZ(data, function(err, result){
+        oDb.oInsertWZ(wenzhangUrl, data, function(err, result){
             if (err) {
                 console.log(err);
                 return;
@@ -29,7 +32,7 @@ var showIncomingMessage = function(req, res){
 }
 var showAllWZ = function(req, res){
     var oallResult = [];
-    oDb.bianli({}, function(err, result){
+    oDb.bianli(wenzhangUrl, {}, function(err, result){
         if (err) {
             console.log(err);
             return;
@@ -65,26 +68,14 @@ var showAllWZ = function(req, res){
     // }
 }
 var showCertain = function(req, res){
-    oDb.bianli(req.query, function(err, result){
+    oDb.bianli(wenzhangUrl, req.query, function(err, result){
         console.log(req.query);
         if (err) {
             console.log(err);
             return;
         }
-        // console.log(59, result);
         res.send(result);
-        // res.send(result);
     });
-    // oDb.oFindWZ(req.query, function(err, result){
-    //     if (err) {
-    //         console.log(err);
-    //         return;
-    //     } else {
-    //         // console.log(result);
-    //         res.json(result);
-    //         console.log(result);
-    //     }
-    // });
 }
 var showArticle = function(req, res){//传送模板knowledge.html
     res.sendFile(
@@ -93,7 +84,7 @@ var showArticle = function(req, res){//传送模板knowledge.html
     )
 };
 var delCertain = function(req, res){
-    oDb.oDelWZ(req.query, 
+    oDb.oDelWZ(wenzhangUrl, req.query, 
         function(err, result){//callback
             console.log("要删除的是：", req.query);
             if (err) {
@@ -123,5 +114,9 @@ var saveImg = function(req, res){
             }
         }
     });
+}
+var 
+var showPL = function(req, res){
+    oDb.bianli
 }
 module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg};

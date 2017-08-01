@@ -1,10 +1,11 @@
 var mongoClient = require("mongodb").MongoClient;
-var dbconf = require("./dbconf.js").dbconf,
-    pinglunUrl = dbconf.url_pinglun,
-    wenzhangUrl = dbconf.url_wenzhang;
+// var dbconf = require("./dbconf.js").dbconf,
+//     pinglunUrl = dbconf.url_pinglun,
+//     wenzhangUrl = dbconf.url_wenzhang;
 
-function oInsertWZ (data, callback) {
-    mongoClient.connect(wenzhangUrl, function(err, db){
+
+function oInsertWZ (dbUrl, data, callback) {
+    mongoClient.connect(dbUrl, function(err, db){
         if (err) {
             callback(err, null);
             db.close();
@@ -17,8 +18,8 @@ function oInsertWZ (data, callback) {
         });
     });
 }
-function oFindWZ(colName, json, callback){
-    mongoClient.connect(wenzhangUrl, function(err, db){
+function oFindWZ(dbUrl, colName, json, callback){
+    mongoClient.connect(dbUrl, function(err, db){
         if (err) {
             callback(err, null);
             db.close();
@@ -37,8 +38,8 @@ function oFindWZ(colName, json, callback){
         });
     });
 }
-function oDelWZ(json, callback){
-    mongoClient.connect(wenzhangUrl, function(err, db){
+function oDelWZ(dbUrl, json, callback){
+    mongoClient.connect(dbUrl, function(err, db){
         if (err) {
             callback(err, null);
             db.close();
@@ -58,8 +59,8 @@ function oDelWZ(json, callback){
     });
 }
 // 输入标题，可以遍历所有数据库，并返回该文章以及所在的集合
-function bianli(json, callback) {//接收查询条件，返回查询结果
-    mongoClient.connect(wenzhangUrl, function(err, db){
+function bianli(dbUrl, json, callback) {//接收查询条件，返回查询结果
+    mongoClient.connect(dbUrl, function(err, db){
         if (err) {
             callback(err, null);
             db.close();

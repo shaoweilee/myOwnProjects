@@ -50,32 +50,14 @@
 					<header class="bg"></header>
 					<div class="">
 						<h1>评论</h1>
-						<form action="/pinglun" method="post" class="">
+						<form method="post" id="pinglun">
 							<label for="name">Your name:<input type="text" name="name" id="name" /></label>
 							<label for="p_content" class="specialText">You saying:<textarea name="p_content" rows="10" cols="10" id="p_content"></textarea></label>
-							<button class="specialText">Say</button>
-							<button class="specialText">Clear</button>
+							<button class="specialText" id="say">Say</button>
+							<button class="specialText" id="clear">Clear</button>
 						</form>
 						<div id="p_list" class="p_list">
 							<ul>
-								<li>
-									<h2>4545</h2>
-									<p class="normalText">
-										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
-									</p>
-								</li>
-								<li>
-									<h2>4545</h2>
-									<p class="normalText">
-										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
-									</p>
-								</li>
-								<li>
-									<h2>4545</h2>
-									<p class="normalText">
-										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
-									</p>
-								</li>
 								<li>
 									<h2>4545</h2>
 									<p class="normalText">
@@ -123,6 +105,21 @@
 				return json;
 			}
 			var json = parseQueryString( decodeURI(window.location.search) );//用decodeURI对网址解码，不然是乱码。
+			var PL = {//评论功能包
+				content: $.extend({}, json, {
+					userName: $("#name").val(),
+					content: $("#p_content").val()
+				}),
+				// push: function(){
+
+				// 	$.post
+				// },
+				// get: function(){}
+			};
+			$("#say").click(function(){
+				$("#pinglun").submit(function(){return false;});
+				console.log(PL.content);
+			});
 			$.get("/showCertain", json, function(data){
 				$("#zw_h1").text(data[0].biaoti);
 				$("title").text(data[0].biaoti);
@@ -143,6 +140,7 @@
 					}
 				}
 			});
+			
 			$(".n_switch").mouseenter(function(){//切换目录
 				$(this).addClass("n_switch_off");
 				$("#note").removeClass("n_disappear").addClass("n_appear");
