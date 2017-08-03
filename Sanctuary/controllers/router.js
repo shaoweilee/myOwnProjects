@@ -115,8 +115,13 @@ var saveImg = function(req, res){
         }
     });
 }
-var 
+
 var showPL = function(req, res){
-    oDb.bianli
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, data, files){
+        console.log(data);
+    });
+    res.send("1");
+    // oDb.bianli
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg};
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg,showPL};

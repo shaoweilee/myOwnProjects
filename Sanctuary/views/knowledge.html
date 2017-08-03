@@ -106,19 +106,23 @@
 			}
 			var json = parseQueryString( decodeURI(window.location.search) );//用decodeURI对网址解码，不然是乱码。
 			var PL = {//评论功能包
-				content: $.extend({}, json, {
-					userName: $("#name").val(),
-					content: $("#p_content").val()
-				}),
-				// push: function(){
-
-				// 	$.post
-				// },
+				content: undefined,
+				push: function(pl, callback){
+					$.post("/pinglun", pl, function(data){
+						callback(data);
+					});
+				},
 				// get: function(){}
 			};
 			$("#say").click(function(){
 				$("#pinglun").submit(function(){return false;});
-				console.log(PL.content);
+				PL.content = $.extend({}, json, {
+					userName: $("#name").val(),
+					content: $("#p_content").val()
+				});
+				PL.push(PL.content, function(data){
+					console.log(data);
+				});
 			});
 			$.get("/showCertain", json, function(data){
 				$("#zw_h1").text(data[0].biaoti);

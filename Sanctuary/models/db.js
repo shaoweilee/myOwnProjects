@@ -68,7 +68,7 @@ function bianli(dbUrl, json, callback) {//接收查询条件，返回查询结�
         }
         db.collections(function(err, cols){
             var allResult = [];
-            for (var i = 1; i < cols.length; i++) {//第一个是system，没用。所以从第二个开始。
+            for (var i = 0; i < cols.length; i++) {//第一个是system，没用。所以从第二个开始。
                 (function(i){
                     cols[i].find(json).toArray(function (err, result) {//每一个cols[i]，都是一个单独的集合collection。
                         if (err) {
