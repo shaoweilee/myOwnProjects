@@ -104,7 +104,24 @@ function bianli(dbUrl, json, callback) {//接收查询条件，返回查询结�
 }
 
 function ofindPL(dbUrl, json, callback){
-
+    mongoClient.connect(dbUrl, function(err, db){
+        if (err) {
+            callback(err, null);
+            db.close();
+            return;
+        }
+        db.collection(json, function(err, col){//if the collection exists, fetch it. otherwise, create it.
+            if (err) {
+                callback(err, null);
+                db.close();
+                return;
+            }
+            col.find({}).toArray(function(err, result){
+                callback(err, result);
+                db.close();
+            });
+        });
+    });
 }
 function getCollectionAndInsertPL(dbUrl, data, callback) {
     mongoClient.connect(dbUrl, function(err, db){
@@ -127,4 +144,4 @@ function getCollectionAndInsertPL(dbUrl, data, callback) {
     });
 }
 // getCollection("mongodb://47.94.103.174:27017/pinglun", {"biaoti":"第一篇文章", "userName":"shaoweili", "content":"He is handsome"});test function
-module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli,getCollectionAndInsertPL};
+module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli,getCollectionAndInsertPL,ofindPL};

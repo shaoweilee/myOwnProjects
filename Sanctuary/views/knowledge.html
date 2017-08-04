@@ -85,7 +85,7 @@
 			<!-- </ul> -->
 			<ul>
 				<li>|</li>
-				<li><a href="">转到评论</a></li>
+				<li><a href="javascript:void(0);">转到评论</a></li>
 				<li>|</li>
 				<li><a href="">回到顶部</a></li>
 				<li>|</li>
@@ -112,7 +112,11 @@
 						callback(data);
 					});
 				},
-				// get: function(){}
+				get: function(json, callback){
+					$.get("/showPL", json, function(data){
+						callback(data);
+					});
+				}
 			};
 			$("#say").click(function(){
 				$("#pinglun").submit(function(){return false;});
@@ -144,7 +148,9 @@
 					}
 				}
 			});
-			
+			PL.get(json, function(data){//获取评论
+				console.log(data);
+			});
 			$(".n_switch").mouseenter(function(){//切换目录
 				$(this).addClass("n_switch_off");
 				$("#note").removeClass("n_disappear").addClass("n_appear");

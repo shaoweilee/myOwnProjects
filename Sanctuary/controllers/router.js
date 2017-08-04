@@ -117,11 +117,13 @@ var saveImg = function(req, res){
 }
 
 var showPL = function(req, res){
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, data, files){
-        console.log(data);
+    oDb.ofindPL(pinglunUrl, req.query.biaoti, function(err, results){
+        res.send(results);
     });
-    res.send("1");
+    // var form = new formidable.IncomingForm();
+    // form.parse(req, function(err, data, files){
+    //     console.log(data);
+    // });
     // oDb.bianli
 }
 var addPL = function(req, res){
