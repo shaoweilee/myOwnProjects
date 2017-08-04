@@ -102,4 +102,29 @@ function bianli(dbUrl, json, callback) {//接收查询条件，返回查询结�
         });
     });
 }
-module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli};
+
+function ofindPL(dbUrl, json, callback){
+
+}
+function getCollectionAndInsertPL(dbUrl, data, callback) {
+    mongoClient.connect(dbUrl, function(err, db){
+        if (err) {
+            callback(err, null);
+            db.close();
+            return;
+        }
+        db.collection(data.biaoti, function(err, col){//if the collection exists, fetch it. otherwise, create it.
+            if (err) {
+                callback(err, null);
+                db.close();
+                return;
+            }
+            col.insertOne({"userName": data.userName, "content":data.content}, function(err, result){
+                callback(err, result);
+                db.close();
+            });
+        });
+    });
+}
+// getCollection("mongodb://47.94.103.174:27017/pinglun", {"biaoti":"第一篇文章", "userName":"shaoweili", "content":"He is handsome"});test function
+module.exports = {oInsertWZ,oFindWZ,oDelWZ,bianli,getCollectionAndInsertPL};

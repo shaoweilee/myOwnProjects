@@ -20,5 +20,5 @@ app.get("/shanchu", router.delCertain);
 app.post("/upload", router.saveImg);
 app.get("/articles", router.showArticle);
 app.get("/showCertain", router.showCertain);
-app.post("/pinglun", router.showPL);
+app.post("/pinglun", router.addPL);
 app.listen(80, "127.0.0.1");//

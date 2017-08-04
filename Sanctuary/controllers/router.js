@@ -124,4 +124,18 @@ var showPL = function(req, res){
     res.send("1");
     // oDb.bianli
 }
-module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg,showPL};
+var addPL = function(req, res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, data, files){//data includes: title, userName, comments
+        oDb.getCollectionAndInsertPL(pinglunUrl, data, function(err, result){
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                console.log("插入评论结果", result.result);
+                res.send("1");
+            }
+        });
+    });
+}
+module.exports = {showKnowledge,showIncomingMessage,showAdmin,showAllWZ,showCertain,showArticle,delCertain,saveImg,showPL,addPL};
