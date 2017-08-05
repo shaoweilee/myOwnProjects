@@ -58,12 +58,7 @@
 						</form>
 						<div id="p_list" class="p_list">
 							<ul>
-								<li>
-									<h2>4545</h2>
-									<p class="normalText">
-										为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？为什么这里是container而不是XXX呢？
-									</p>
-								</li>
+								<!-- for comments -->
 							</ul>
 						</div>
 					</div>
@@ -117,6 +112,7 @@
 						callback(data);
 					});
 				}
+				//还需要刷新评论的方法，
 			};
 			$("#say").click(function(){
 				$("#pinglun").submit(function(){return false;});
@@ -149,6 +145,12 @@
 				}
 			});
 			PL.get(json, function(data){//获取评论
+				data.forEach(function(ele, index, data) {
+					var $li = $("<li></li>");
+					var $h2 = $("<h2></h2>").html(ele.userName).appendTo($li);
+					var $p = $("<p></p>", {"class":"normalText"}).html(ele.content).appendTo($li);
+					$li.prependTo( $("#p_list ul") );
+				}, this);
 				console.log(data);
 			});
 			$(".n_switch").mouseenter(function(){//切换目录
