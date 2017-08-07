@@ -109,8 +109,8 @@ var saveImg = function(req, res){
                 fs.renameSync(oldPath, newPath);
                 res.send({
                     errno: 0,
-                    // data: ["http://localhost/uploadFiles/" + element.name]
-                    data: ["http://www.herosanctuary.com/uploadFiles/" + element.name]
+                    data: ["http://localhost/uploadFiles/" + element.name]
+                    // data: ["http://www.herosanctuary.com/uploadFiles/" + element.name]
                 });
             }
         }
