@@ -99,17 +99,17 @@ var delCertain = function(req, res){
 }
 var saveImg = function(req, res){
     var form = new formidable.IncomingForm();
-    form.uploadDir = "./public/!uploadFiles";
+    form.uploadDir = "./public/uploadFiles";
     form.parse(req, function(err, fields, files){
         for (var key in files) {
             if (files.hasOwnProperty(key)) {
                 var element = files[key];
                 var oldPath = "./" + element.path;
-                var newPath = "./public/!uploadFiles/" + element.name;
+                var newPath = "./public/uploadFiles/" + element.name;
                 fs.renameSync(oldPath, newPath);
                 res.send({
                     errno: 0,
-                    // data: ["http://localhost/!uploadFiles/" + element.name]
+                    // data: ["http://localhost/uploadFiles/" + element.name]
                     data: ["http://www.herosanctuary.com/uploadFiles/" + element.name]
                 });
             }
