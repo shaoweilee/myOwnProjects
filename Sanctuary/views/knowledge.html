@@ -60,6 +60,13 @@
 							<ul>
 								<!-- for comments -->
 							</ul>
+							<div class="success_stage">
+								<div class="success_container">
+									<div class="success_content">
+										<h2>评论成功！</h2>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<footer class="img-reverse-y bg"></footer>
@@ -122,7 +129,21 @@
 					content: $("#p_content").val()
 				});
 				PL.push(PL.content, function(data){
-					console.log(data);
+					// console.log(data);
+					if (data == 1) {//评论成功
+						$("#p_list ul").empty();
+						PL.get(json, function(data){//获取评论
+							data.forEach(function(ele, index, data) {
+								var $li = $("<li></li>");
+								var $h2 = $("<h2></h2>").html(ele.userName).appendTo($li);
+								var $p = $("<p></p>", {"class":"normalText"}).html(ele.content).appendTo($li);
+								$li.prependTo( $("#p_list ul") );
+							}, this);
+							// console.log(data);
+						});
+					} else {//评论失败
+						
+					}
 				});
 			});
 			$.get("/showCertain", json, function(data){
