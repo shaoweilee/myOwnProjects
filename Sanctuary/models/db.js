@@ -46,7 +46,7 @@ function oDelWZ(dbUrl, json, callback){
             return;
         }
         db.collections(function(err, cols){
-            for (var i = 1; i < cols.length; i++) {
+            for (var i = 0; i < cols.length; i++) {
                 // console.log(49, cols[i].collectionName);
                 cols[i].deleteOne(json, function(err, result){
                     if (result.deletedCount !== 0) {
