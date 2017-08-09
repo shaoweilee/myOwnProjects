@@ -51,8 +51,8 @@
 					<div class="">
 						<h1>评论</h1>
 						<form method="post" id="pinglun">
-							<label for="name">Your name:<input type="text" name="name" id="name" /></label>
-							<label for="p_content" class="specialText">You saying:<textarea name="p_content" rows="10" cols="10" id="p_content"></textarea></label>
+							<label for="name">Your name:<input type="text" name="name" id="name" placeholder="雁过留声，英雄请留名" /></label>
+							<label for="p_content" class="specialText">You saying:<textarea name="p_content" rows="10" cols="10" id="p_content" placeholder="没设验证码，不要刷屏。。。"></textarea></label>
 							<button class="specialText" id="say">Say</button>
 							<button class="specialText" id="clear">Clear</button>
 						</form>
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 		</div>
-	
+		<audio id="success_music" src="/media/PLsuccess.mp3"></audio>
 	
 		</div><!--container end-->
 		<!--目录开始-->
@@ -116,8 +116,11 @@
 					$.get("/showPL", json, function(data){
 						callback(data);
 					});
+				},
+				//清空输入框的方法
+				clear: function(){
+					
 				}
-				//还需要评论反馈的方法，这里做一个动画。
 				
 			};
 			$("#say").click(function(){
@@ -129,6 +132,11 @@
 				PL.push(PL.content, function(data){
 					// console.log(data);
 					if (data == 1) {//评论成功
+						$("#success_music")[0].play();
+						$(".success_content").addClass("animate");
+						setTimeout(function(){
+							$(".success_content").removeClass("animate");
+						}, 2000);
 						$("#p_list ul").empty();
 						PL.get(json, function(data){//获取评论
 							data.forEach(function(ele, index, data) {
