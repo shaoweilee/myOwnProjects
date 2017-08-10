@@ -199,6 +199,7 @@ body{
 /*评论成功的动画*/
 .success_stage{
 	/*margin: 0 auto;*/
+	 display: none; 
 	width: 30%;
 	height: 30%;
 	position: fixed;

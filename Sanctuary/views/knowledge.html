@@ -132,10 +132,12 @@
 				PL.push(PL.content, function(data){
 					// console.log(data);
 					if (data == 1) {//评论成功
+						$(".success_stage")[0].style.display = "block";
 						$("#success_music")[0].play();
 						$(".success_content").addClass("animate");
 						setTimeout(function(){
 							$(".success_content").removeClass("animate");
+							$(".success_stage")[0].style.display = "none";
 						}, 2000);
 						$("#p_list ul").empty();
 						PL.get(json, function(data){//获取评论
