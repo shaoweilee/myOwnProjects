@@ -53,8 +53,8 @@
 						<form method="post" id="pinglun">
 							<label for="name">Your name:<input type="text" name="name" id="name" placeholder="雁过留声，英雄请留名" /></label>
 							<label for="p_content" class="specialText">You saying:<textarea name="p_content" rows="10" cols="10" id="p_content" placeholder="没设验证码，不要刷屏。。。"></textarea></label>
-							<button class="specialText" id="say">Say</button>
-							<button class="specialText" id="clear">Clear</button>
+							<button type="button" class="specialText" id="say">Say</button>
+							<button type="reset" class="specialText" id="clear">Clear</button>
 						</form>
 						<div id="p_list" class="p_list">
 							<ul>
@@ -74,6 +74,13 @@
 				</div>
 			</div>
 		</div>
+		<!-- <div class="fail_stage"> -->
+			<!-- <div class="fail_container"> -->
+				<div class="fail_content">
+					<h2>名字留言都写上~</h2>
+				</div>
+			<!-- </div> -->
+		<!-- </div> -->
 		<audio id="success_music" src="/media/PLsuccess.mp3"></audio>
 	
 		</div><!--container end-->
@@ -117,17 +124,26 @@
 						callback(data);
 					});
 				},
-				//清空输入框的方法
-				clear: function(){
-					
+				fail: function(width1, time, width2){
+					$(".fail_content").width(width1);
+						setTimeout(function(){
+							PL.fail(width2);
+						}, time);					
 				}
 				
 			};
 			$("#say").click(function(){
-				$("#pinglun").submit(function(){return false;});
+				// $("#pinglun").submit(function(){return false;});
+				var userName = $("#name").val(),
+					content = $("#p_content").val();
+					if (userName == "" || content == "") {
+						console.log("英雄留名，也留评论~");
+						PL.fail( $(".fail_content").width( $("html").width() * 0.4 ), 1000, 0 );
+						return false;
+					}
 				PL.content = $.extend({}, json, {
-					userName: $("#name").val(),
-					content: $("#p_content").val()
+					userName: userName,
+					content: content
 				});
 				PL.push(PL.content, function(data){
 					// console.log(data);

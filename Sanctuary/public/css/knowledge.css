@@ -11,6 +11,9 @@ a{
 	text-decoration: none;
 	color: black;
 }
+p{
+	font-size: 2em;
+}
 h1{
 	font-family: avqest;
 	font-size: 4em;
@@ -196,10 +199,13 @@ body{
 .container>section article{
 	padding: 5% 5% 0% 5%;
 }
+#zw_p{
+	font-size: 1em;
+}
 /*评论成功的动画*/
 .success_stage{
 	/*margin: 0 auto;*/
-	 display: none; 
+	display: none; 
 	width: 30%;
 	height: 30%;
 	position: fixed;
@@ -245,7 +251,8 @@ body{
 	border-radius: 20%;
 	box-shadow: 5px 0px 10px #000000;
 }
-.success_content h2{
+.success_content h2,
+.fail_content h2{
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -253,6 +260,22 @@ body{
 	padding: 0;
 }
 /*评论成功的动画*/
+.fail_content{
+	/*display: none;*/
+	background: #C0A16B;
+	border-radius: 5%;
+	width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	/*min-width: 0;*/
+	height: 10%;
+	position: fixed;
+	top: 0; bottom: 0; left: 0; right: 0;
+	margin: auto;
+	z-index: 99;
+	transition: all .5s ease;
+}
+
 @media only screen and (min-width: 1600px){
 	html{
 		font-size: 62.5%;
