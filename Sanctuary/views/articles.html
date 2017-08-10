@@ -56,16 +56,16 @@
 				data.forEach(function(ele, index, arr) {
 					switch (ele.fenlei) {
 						case "css":
-							$('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#css') );
-							// $('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#css') );
+							// $('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#css') );
+							$('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#css') );
 							break;
 						case "js":
-							$('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#js') );
-							// $('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#js') );
+							// $('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#js') );
+							$('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#js') );
 							break;
 						case "node":
-							$('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#node') );
-							// $('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#node') );
+							// $('<li><a href="http://www.herosanctuary.com/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#node') );
+							$('<li><a href="http://127.0.0.1/articles?biaoti=' + ele.biaoti + '">' + ele.biaoti + '</a></li>').appendTo( $('#node') );
 							break;
 					}
 				}, this);

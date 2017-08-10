@@ -22,5 +22,5 @@ app.get("/articles", router.showArticle);
 app.get("/showCertain", router.showCertain);
 app.post("/pinglun", router.addPL);
 app.get("/showPL", router.showPL);
-// app.listen(80, "127.0.0.1");
-app.listen(80, "172.17.116.6");
+app.listen(80, "127.0.0.1");
+// app.listen(80, "172.17.116.6");
