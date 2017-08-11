@@ -7,9 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
 		<script src="/js/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
-			.content {
-				height: 400px;
-			}
+			
 		</style>
 		<title>hero!</title>
 	</head>
@@ -42,7 +40,8 @@
 								<option>node</option>
 							</select>
 							<span>文章正文</span>
-							<div class="form-control content" id="zhengwen"></div>
+							<div class="" id="zhengwen"></div>
+							<!-- form-control -->
 						</div>
 						<button type="submit" class="btn btn-default" id="fabu">发文章</button>
 						<button type="submit" class="btn btn-default" id="caogao">存草稿</button>
@@ -72,19 +71,28 @@
 			}
 			editor.customConfig.debug = true;//用于在控制台显示失败信息
 			editor.create();
+			// $("#zhengwen").height("auto");
+			$("#zhengwen>div:last-child").height("750px");
+			// $("#zhengwen>div:last-child").css({"minHeight":"800px"});
 		</script>
 		<script type="text/javascript">
-			$("#xie").click(function() {//写文章
-				$(this).addClass("active");
+			function swithToXie(){
+				$("#xie").addClass("active");
 				$("#guanli").removeClass("active");
 				$("#form").show();
 				$("#allwenzhang").addClass("hidden");
-			});
-			$("#guanli").click(function() {//管文章
-				$(this).addClass("active");
+			}
+			function switchToGuanli(){
+				$("#guanli").addClass("active");
 				$("#xie").removeClass("active");
 				$("#form").hide();
 				$("#allwenzhang").removeClass("hidden").empty();
+			}
+			$("#xie").click(function() {//写文章
+				swithToXie();
+			});
+			$("#guanli").click(function() {//管文章
+				switchToGuanli();
 				// var allFenlei = [];
 				// for (var i = 0; i < $("#fenlei").children().length; i++) {
 				// 	allFenlei.push( $("#fenlei").children()[i].innerHTML );
@@ -106,14 +114,18 @@
 				});
 			});
 
-			$("#allwenzhang").on("click", ".xiugai", //事件代理
+			$("#allwenzhang").on("click", ".xiugai", //事件代理：修改
 				function(e) {
 					$.get("/xiugai", {"biaoti" : e.target.previousSibling.nodeValue}, function(data){
 						console.log(data);//查找到该标题对应的文章。
+						swithToXie();
+						$("#biaoti").val(data[0].biaoti);
+						$("#fenlei").val(data[0].fenlei);
+						editor.txt.html(data[0].zhengwen);
 					});
 				}
 			);
-			$("#allwenzhang").on("click", ".shanchu", //事件代理
+			$("#allwenzhang").on("click", ".shanchu", //事件代理：删除
 				function(e) {
 					$.get("/shanchu", {"biaoti" : e.target.previousSibling.previousSibling.nodeValue}, function(data){
 						console.log(data);//查找到该标题对应的文章。
